@@ -1,8 +1,8 @@
-__author__ = 'Kern'
-
 import numpy as np
 from skimage.feature import greycomatrix
 from skimage.feature import greycoprops
+
+__author__ = 'Kern'
 
 
 def compute_features(image, distances, angles):

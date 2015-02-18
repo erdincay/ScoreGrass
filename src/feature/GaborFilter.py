@@ -1,9 +1,8 @@
 from skimage.filter import gabor_kernel
-
-__author__ = 'Kern'
-
 import numpy as np
 from scipy import ndimage as nd
+
+__author__ = 'Kern'
 
 
 def generate_kernels(num):
