@@ -2,6 +2,7 @@
   <dictionary name="Kern">
     <words>
       <w>glcm</w>
+      <w>sklearn</w>
     </words>
   </dictionary>
 </component>
