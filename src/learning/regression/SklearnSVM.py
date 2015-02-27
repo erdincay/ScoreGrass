@@ -8,8 +8,8 @@ class SklearnSVM:
     def __init__(self, kernel):
         self.svr = SVR(kernel)
 
-    def training(self, in_data, labels):
-        x_train, x_test, y_train, y_test = cross_validation.train_test_split(in_data, labels,
+    def training(self, x_data, y_data):
+        x_train, x_test, y_train, y_test = cross_validation.train_test_split(x_data, y_data,
                                                                              test_size=0.3, random_state=0)
         self.svr.fit(x_train, y_train)
         self.svr.score(x_test, y_test)
