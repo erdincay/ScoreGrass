@@ -1,5 +1,6 @@
 from sklearn.svm import SVR
-from sklearn import cross_validation
+from ..preprocessing.CrossValidation import train_test_split
+
 
 __author__ = 'Kern'
 
@@ -9,8 +10,7 @@ class SklearnSVM:
         self.svr = SVR(kernel)
 
     def training(self, x_data, y_data):
-        x_train, x_test, y_train, y_test = cross_validation.train_test_split(x_data, y_data,
-                                                                             test_size=0.3, random_state=0)
+        x_train, x_test, y_train, y_test = train_test_split(0.3)(x_data, y_data)
         self.svr.fit(x_train, y_train)
         self.svr.score(x_test, y_test)
 

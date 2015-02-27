@@ -1,5 +1,5 @@
-from sklearn import cross_validation
 import theanets
+from ..preprocessing.CrossValidation import train_test_split
 
 __author__ = 'Kern'
 
@@ -9,8 +9,7 @@ class TheanetsNeuralNetwork:
         self.exp = theanets.Experiment(theanets.Regressor)
 
     def train(self, x_data, y_data):
-        x_train, x_test, y_train, y_test = cross_validation.train_test_split(x_data, y_data,
-                                                                             test_size=0.3, random_state=0)
+        x_train, x_test, y_train, y_test = train_test_split(0.3)(x_data, y_data)
         return self.exp.train((x_train, y_train), (x_test, y_test))
 
     def predict(self, in_data):
