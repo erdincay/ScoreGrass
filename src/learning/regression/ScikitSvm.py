@@ -6,8 +6,8 @@ __author__ = 'Kern'
 
 
 class ScikitSvm:
-    def __init__(self, kernel):
-        self.svr = SVR(kernel)
+    def __init__(self, knr):
+        self.svr = SVR(kernel=knr)
 
     def training(self, x_data, y_data):
         assert (x_data.shape[0] == y_data.shape[0])

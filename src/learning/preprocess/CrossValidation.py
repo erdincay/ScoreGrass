@@ -6,7 +6,7 @@ __author__ = 'Kern'
 
 def train_test_split(factor):
     """
-
+    split the data set by factor
     :param factor: test part size
     :return: function that accept all samples
     """
@@ -19,7 +19,7 @@ def train_test_split(factor):
 
 def bootstrop(factor, n_iter):
     """
-
+    bootstrop split data set by factor and iteration times
     :param factor: test part size
     :param n_iter: iteration times
     :return: function that accept all samples
@@ -34,7 +34,7 @@ def bootstrop(factor, n_iter):
 
 def data_set_split(factor):
     """
-
+    pybrain data set split method
     :param factor: test part size
     :return: function that accept all samples
     """
