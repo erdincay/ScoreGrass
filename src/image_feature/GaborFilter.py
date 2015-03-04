@@ -9,10 +9,10 @@ def generate_kernels(num):
     kernels = []
     for theta in range(num):
         theta = theta / num * np.pi
-    for sigma in (1, 3):
-        for frequency in (0.05, 0.25):
-            kernel = np.real(gabor_kernel(frequency, theta=theta, sigma_x=sigma, sigma_y=sigma))
-            kernels.append(kernel)
+        for sigma in (1, 3):
+            for frequency in (0.05, 0.25):
+                kernel = np.real(gabor_kernel(frequency, theta=theta, sigma_x=sigma, sigma_y=sigma))
+                kernels.append(kernel)
 
     return kernels
 
