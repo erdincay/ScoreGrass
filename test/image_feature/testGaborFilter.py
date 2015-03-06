@@ -1,45 +1,21 @@
 __author__ = 'Kern'
 
-# from __future__ import print_function
-
 import matplotlib.pyplot as plt
-import numpy as np
-from scipy import ndimage as nd
-
 from skimage import data
 from skimage.util import img_as_float
-from skimage.filter import gabor_kernel
 
-
-def compute_feats(image, kernels):
-    feats = np.zeros((len(kernels), 2), dtype=np.double)
-    for k, kernel in enumerate(kernels):
-        filtered = nd.convolve(image, kernel, mode='wrap')
-        feats[k, 0] = filtered.mean()
-        feats[k, 1] = filtered.var()
-    return feats
+from src.image_feature.GaborFilter import *
 
 
 def match(feats, ref_feats):
     min_error = np.inf
     min_i = None
     for i in range(ref_feats.shape[0]):
-        error = np.sum((feats - ref_feats[i, :])**2)
+        error = np.sum((feats - ref_feats[i, :]) ** 2)
         if error < min_error:
             min_error = error
             min_i = i
     return min_i
-
-
-# prepare filter bank kernels
-kernels = []
-for theta in range(4):
-    theta = theta / 4. * np.pi
-    for sigma in (1, 3):
-        for frequency in (0.05, 0.25):
-            kernel = np.real(gabor_kernel(frequency, theta=theta,
-                                          sigma_x=sigma, sigma_y=sigma))
-            kernels.append(kernel)
 
 
 shrink = (slice(0, None, 3), slice(0, None, 3))
@@ -50,6 +26,7 @@ image_names = ('brick', 'grass', 'wall')
 images = (brick, grass, wall)
 
 # prepare reference features
+kernels = generate_kernels(4)
 ref_feats = np.zeros((3, len(kernels), 2), dtype=np.double)
 ref_feats[0, :, :] = compute_feats(brick, kernels)
 ref_feats[1, :, :] = compute_feats(grass, kernels)
@@ -73,8 +50,8 @@ print(image_names[match(feats, ref_feats)])
 def power(image, kernel):
     # Normalize images for better comparison.
     image = (image - image.mean()) / image.std()
-    return np.sqrt(nd.convolve(image, np.real(kernel), mode='wrap')**2 +
-                   nd.convolve(image, np.imag(kernel), mode='wrap')**2)
+    return np.sqrt(nd.convolve(image, np.real(kernel), mode='wrap') ** 2 +
+                   nd.convolve(image, np.imag(kernel), mode='wrap') ** 2)
 
 # Plot a selection of the filter bank kernels and their responses.
 results = []

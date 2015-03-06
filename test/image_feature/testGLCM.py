@@ -1,9 +1,9 @@
 __author__ = 'Kern'
 
 import matplotlib.pyplot as plt
-
-from skimage.feature import greycomatrix, greycoprops
 from skimage import data
+
+from src.image_feature.GLCM import *
 
 
 PATCH_SIZE = 21
@@ -29,9 +29,9 @@ for loc in sky_locations:
 xs = []
 ys = []
 for i, patch in enumerate(grass_patches + sky_patches):
-    glcm = greycomatrix(patch, [5], [0], 256, symmetric=True, normed=True)
-    xs.append(greycoprops(glcm, 'dissimilarity')[0, 0])
-    ys.append(greycoprops(glcm, 'correlation')[0, 0])
+    feats = compute_features(patch, [5], [0])
+    xs.append(feats[0, 0])
+    ys.append(feats[0, 1])
 
 # create the figure
 fig = plt.figure(figsize=(8, 8))
