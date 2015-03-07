@@ -14,7 +14,7 @@ def generate_red_map(image):
     return distance_red
 
 
-def peak_detector(distance_map):
-    return peak_local_max(distance_map, threshold_rel=0.825, min_distance=50, num_peaks=8)
+def peak_detector(distance_map, threshold, min_d):
+    return peak_local_max(distance_map, threshold_rel=threshold, min_distance=min_d, num_peaks=8)
 
 
