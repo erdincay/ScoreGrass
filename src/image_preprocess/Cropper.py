@@ -16,6 +16,12 @@ def extreme_value(coords):
 
 
 def diagonal_cropping(image, coords):
+    """
+    Crop image into rectangle, the diagonal line is calculate via minimum and maximum value from a set of coordinate
+    :param image: input image
+    :param coords: a set of coordinates that indicate the interest region of the image
+    :return: :raise TypeError: cropped image
+    """
     row_min, row_max, col_min, col_max = extreme_value(coords)
 
     if len(image.shape) == 2:
