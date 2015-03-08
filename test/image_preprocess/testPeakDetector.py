@@ -1,11 +1,18 @@
-from src.image_preprocess.PeakDetector import *
-from skimage import io
+import sys
 
+from skimage import io
 import matplotlib.pyplot as plt
+
+from src.image_preprocess.PeakDetector import *
+
 
 __author__ = 'Kern'
 
-image = io.imread("D:\\Dropbox\\Turfgrass software project\\Pictures from the summer\\July 31\\7-31-2014 plot 6.JPG")
+if len(sys.argv) < 2:
+    raise ValueError("Usage:", sys.argv[0], " Missing some argument to indicate input files")
+path = sys.argv[1]
+
+image = io.imread(path)
 
 distance_red = generate_red_map(image)
 coords_red = peak_detector(distance_red, 0.825, 80)

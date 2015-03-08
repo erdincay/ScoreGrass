@@ -4,11 +4,13 @@
       <w>bootstrop</w>
       <w>coords</w>
       <w>datas</w>
+      <w>descs</w>
       <w>dropbox</w>
       <w>gabor</w>
       <w>glcm</w>
       <w>preprocess</w>
       <w>scikit</w>
+      <w>skimage</w>
       <w>sklearn</w>
       <w>theanets</w>
       <w>turfgrass</w>
