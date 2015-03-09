@@ -1,12 +1,18 @@
-from skimage import io
+from skimage import io, img_as_float
 from skimage.color import rgb2grey
 from skimage.viewer import ImageViewer
-from skimage.filter import sobel
+from skimage.filters import sobel
+import sys
 
 __author__ = 'Kern'
 
-image = io.imread(
-    "D:\\Dropbox\\Turfgrass software project\\Pictures from the summer\\July 31\\7-31-2014 plot 6.JPG")
+if len(sys.argv) < 2:
+    raise ValueError("Usage:", sys.argv[0], " Missing some argument to indicate input files")
+path = sys.argv[1]
+
+image = io.imread(path)
+
+image = img_as_float(image)
 
 image_gray = rgb2grey(image)
 

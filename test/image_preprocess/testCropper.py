@@ -1,8 +1,8 @@
 import sys
-import functools
 
 from skimage import io
 import matplotlib.pyplot as plt
+from skimage.viewer import ImageViewer
 
 from src.image_preprocess.Cropper import *
 from src.image_preprocess.PeakDetector import *
@@ -17,12 +17,13 @@ path = sys.argv[1]
 image = io.imread(path)
 
 distance_red = generate_red_map(image)
-coords_red = peak_corner_detector(distance_red, 0.825, 150)
+coords_red = peak_corner_detector(distance_red, 0.825, 80)
 print(coords_red.shape)
 
 crop_first_val = diagonal_cropping(image, coords_red, extreme_value)
-crop_second_val = diagonal_cropping(image, coords_red, functools.partial(sequence_extreme_value, index=1))
-crop_third_val = diagonal_cropping(image, coords_red, functools.partial(sequence_extreme_value, index=2))
+
+crop_second_val = diagonal_cropping(image, coords_red, lambda coords: sequence_extreme_value(coords, 1))
+crop_third_val = diagonal_cropping(image, coords_red, lambda coords: sequence_extreme_value(coords, 2))
 
 f, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(15, 10))
 ax1.imshow(image)

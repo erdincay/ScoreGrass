@@ -4,8 +4,13 @@ __author__ = 'Kern'
 
 
 def extreme_value(coords):
+    """
+    find the max/min value in an 2D array for each axis
+    :param coords: input array
+    :return: :raise ValueError:
+    """
     if len(coords.shape) != 2 or coords.shape[1] != 2:
-        raise TypeError("input is not a list of 2D coordinate")
+        raise ValueError("input is not a list of 2D coordinate")
 
     row_min = np.amin(coords[:, 0])
     row_max = np.amax(coords[:, 0])
@@ -16,8 +21,14 @@ def extreme_value(coords):
 
 
 def sequence_extreme_value(coords, index):
+    """
+    find the nth max/min value in an 2D array for each axis
+    :param coords: input array
+    :param index: specify the nth index
+    :return: :raise ValueError:
+    """
     if len(coords.shape) != 2 or coords.shape[1] != 2:
-        raise TypeError("input is not a list of 2D coordinate")
+        raise ValueError("input is not a list of 2D coordinate")
 
     min_index = index
     max_index = -1 - index
@@ -34,7 +45,7 @@ def diagonal_cropping(image, coords, extreme_extraction):
     Crop image into rectangle, the diagonal line is calculate via minimum and maximum value from a set of coordinate
     :param image: input image
     :param coords: a set of coordinates that indicate the interest region of the image
-    :return: :raise TypeError: cropped image
+    :return: :raise ValueError: cropped image
     """
     row_min, row_max, col_min, col_max = extreme_extraction(coords)
 
@@ -43,4 +54,4 @@ def diagonal_cropping(image, coords, extreme_extraction):
     elif len(image.shape) == 3:
         return image[row_min: row_max, col_min: col_max, :]
     else:
-        raise TypeError("input is not a numpy array image")
+        raise ValueError("input is not a numpy array image")

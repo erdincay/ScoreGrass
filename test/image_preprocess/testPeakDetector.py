@@ -2,6 +2,7 @@ import sys
 
 from skimage import io
 import matplotlib.pyplot as plt
+from skimage.transform import resize
 
 from src.image_preprocess.PeakDetector import *
 
@@ -13,9 +14,10 @@ if len(sys.argv) < 2:
 path = sys.argv[1]
 
 image = io.imread(path)
+image = resize(image, (800, 500))
 
 distance_red = generate_red_map(image)
-coords_red = peak_detector(distance_red, 0.825, 80)
+coords_red = peak_detector(distance_red, 0.825, 50)
 
 print(coords_red.shape)
 

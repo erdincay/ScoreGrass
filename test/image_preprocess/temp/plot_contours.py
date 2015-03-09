@@ -34,9 +34,9 @@ image = uniform_filter(image)
 # image = transform.resize(image, (800, 800))
 image_grey = color.rgb2gray(image)
 
-ImageViewer(image_grey).show()
+# ImageViewer(image_grey).show()
 
-contours = measure.find_contours(image_grey, 0.90, fully_connected='high')
+contours = measure.find_contours(image_grey, 10, fully_connected='low')
 print(len(contours))
 
 # Display the image and plot all contours found
