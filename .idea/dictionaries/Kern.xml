@@ -2,6 +2,7 @@
   <dictionary name="Kern">
     <words>
       <w>binarization</w>
+      <w>binarize</w>
       <w>bootstrop</w>
       <w>coords</w>
       <w>datas</w>
@@ -9,6 +10,7 @@
       <w>dropbox</w>
       <w>gabor</w>
       <w>glcm</w>
+      <w>matplotlib</w>
       <w>preprocess</w>
       <w>scikit</w>
       <w>skimage</w>

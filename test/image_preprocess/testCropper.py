@@ -2,39 +2,50 @@ import sys
 
 from skimage import io
 import matplotlib.pyplot as plt
-from skimage.viewer import ImageViewer
 
 from src.image_preprocess.Cropper import *
+from src.image_preprocess.EdgeDetector import *
 from src.image_preprocess.PeakDetector import *
 
+io.use_plugin('matplotlib')
 
 __author__ = 'Kern'
 
-if len(sys.argv) < 2:
+if len(sys.argv) < 3:
     raise ValueError("Usage:", sys.argv[0], " Missing some argument to indicate input files")
-path = sys.argv[1]
+path_dot = sys.argv[1]
+path_frame = sys.argv[2]
 
-image = io.imread(path)
+image_dot = io.imread(path_dot)
+image_frame = io.imread(path_frame)
 
-distance_red = generate_red_map(image)
-coords_red = peak_corner_detector(distance_red, 0.825, 80)
-print(coords_red.shape)
+distance_mark = generate_pink_map(image_dot)
+coords_mark = peak_corner_detector(distance_mark, 0.825, 80)
+crop_dot = diagonal_cropping(image_dot, coords_mark, lambda coords: sequence_extreme_value(coords, 1))
 
-crop_first_val = diagonal_cropping(image, coords_red, extreme_value)
+binary_image = binarize(image_frame)
+edges_map = canny_edge_detector(binary_image, 4.5)
+contours = find_edges(edges_map)
+coords_frame = edge_coordinate(contours)
+crop_frame = diagonal_cropping(image_frame, coords_frame, extreme_value, 100)
 
-crop_second_val = diagonal_cropping(image, coords_red, lambda coords: sequence_extreme_value(coords, 1))
-crop_third_val = diagonal_cropping(image, coords_red, lambda coords: sequence_extreme_value(coords, 2))
+f, ((dot1, dot2, dot3), (frame1, frame2, frame3)) = plt.subplots(2, 3, figsize=(15, 10))
 
-f, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(15, 10))
-ax1.imshow(image)
-ax1.set_title('Marker locations')
-ax1.plot(coords_red[:, 1], coords_red[:, 0], 'ro')
-ax1.axis('image')
-ax2.imshow(crop_first_val)
-ax2.set_title('cropped by max/min coordinate')
-ax3.imshow(crop_second_val)
-ax3.set_title('cropped by secondary coordinate')
-ax4.imshow(crop_third_val)
-ax4.set_title('cropped by third coordinate')
+dot1.imshow(image_dot)
+dot1.set_title('Input Image')
+dot2.imshow(image_dot)
+dot2.plot(coords_mark[:, 1], coords_mark[:, 0], 'ro')
+dot2.set_title('Image Marker')
+dot3.imshow(crop_dot)
+dot3.set_title('Cropped Image')
+
+frame1.imshow(image_frame)
+frame1.set_title('Input Image')
+frame2.imshow(image_frame)
+for n, contour in enumerate(contours):
+    frame2.plot(contour[:, 1], contour[:, 0], linewidth=2)
+frame2.set_title('Image Frame')
+frame3.imshow(crop_frame)
+frame3.set_title('Cropped Image')
 
 plt.show()

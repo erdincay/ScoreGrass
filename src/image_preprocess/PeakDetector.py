@@ -22,6 +22,10 @@ def generate_green_map(image):
     return generate_color_map(image, (0, 1, 0))
 
 
+def generate_pink_map(image):
+    return generate_color_map(image, (1, 0.5, 0.5))
+
+
 def peak_detector(distance_map, threshold, min_d):
     return peak_local_max(distance_map, threshold_rel=threshold, min_distance=min_d, num_peaks=8)
 

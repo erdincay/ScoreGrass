@@ -40,7 +40,7 @@ def sequence_extreme_value(coords, index):
     return row_min, row_max, col_min, col_max
 
 
-def diagonal_cropping(image, coords, extreme_extraction):
+def diagonal_cropping(image, coords, extreme_extraction, offset=0):
     """
     Crop image into rectangle, the diagonal line is calculate via minimum and maximum value from a set of coordinate
     :param image: input image
@@ -48,6 +48,11 @@ def diagonal_cropping(image, coords, extreme_extraction):
     :return: :raise ValueError: cropped image
     """
     row_min, row_max, col_min, col_max = extreme_extraction(coords)
+
+    row_min += offset
+    col_min += offset
+    row_max -= offset
+    col_max -= offset
 
     if len(image.shape) == 2:
         return image[row_min: row_max, col_min: col_max]
