@@ -5,7 +5,7 @@ from skimage.feature import greycoprops
 __author__ = 'Kern'
 
 
-def compute_features(image, distances, angles):
+def compute_feats(image, distances, angles):
     """
     compute the texture feature by grey level co-occurrence matrices
     :param image: is just numpy array
