@@ -1,0 +1,400 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 150.0,
+		"selected_items":
+		[
+			[
+				"pretty",
+				"Pretty JSON: Format (Pretty Print) JSON"
+			],
+			[
+				"pretty json",
+				"Pretty JSON: Format (Pretty Print) JSON"
+			],
+			[
+				"prett",
+				"Pretty JSON: JSON 2 XML"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"r-box",
+				"R-Box Application"
+			],
+			[
+				"pre",
+				"Pretty JSON: Minify (compress) JSON"
+			],
+			[
+				"install ",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 528.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Users/kern.ding/Documents/GitHub/ScoreGrass",
+		"/C/Users/kern.ding/Documents/GitHub/ScoreGrass/src",
+		"/C/Users/kern.ding/Documents/GitHub/ScoreGrass/src/image_feature",
+		"/C/Users/kern.ding/Documents/GitHub/ScoreGrass/src/image_preprocess",
+		"/C/Users/kern.ding/Documents/GitHub/ScoreGrass/src/learning",
+		"/C/Users/kern.ding/Documents/GitHub/ScoreGrass/test",
+		"/C/Users/kern.ding/Documents/GitHub/ScoreGrass/test/image_feature",
+		"/C/Users/kern.ding/Documents/GitHub/ScoreGrass/test/image_preprocess",
+		"/C/Users/kern.ding/Documents/GitHub/ScoreGrass/test/InputOutput"
+	],
+	"file_history":
+	[
+		"/C/Users/kern.ding/Documents/GitHub/ScoreGrass/ScoreGrass.sublime-project",
+		"/C/Users/kern.ding/Documents/GitHub/ScoreGrass/src/image_preprocess/EdgeDetector.py",
+		"/C/Users/kern.ding/Desktop/Workflow 1 (Debug).cs",
+		"/C/Users/kern.ding/Documents/GitHub/ScoreGrass/src/image_feature/GaborFilter.py",
+		"/C/Users/kern.ding/Desktop/testSearch.cs",
+		"/C/Users/kern.ding/Documents/GitHub/ScoreGrass/src/image_preprocess/Cropper.py",
+		"/C/Users/kern.ding/Documents/GitHub/ScoreGrass/test/image_preprocess/testCropper.py",
+		"/C/Users/kern.ding/Desktop/testFindEntries.cs",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/FindEntry/UI/SortColumnDialog.Designer.cs",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/FindEntry/UI/SortColumnDialog.resx",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/FindEntry/UI/SortColumnDialog.cs",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/FindEntry/UI/SortColumnControl.cs",
+		"/E/cfg/testJson.json",
+		"/C/Users/kern.ding/Documents/testJson.txt",
+		"/T/Flavio/junk/RA/EntryListingBase.cs",
+		"/E/invite.ics",
+		"//oakland/fileserver/Eng/Test/Bug Log Files/124000-124999/124764/JSONSource.txt",
+		"//oakland/fileserver/Eng/Test/Bug Log Files/124000-124999/124764/OURReadJSONResult.txt",
+		"//oakland/fileserver/Eng/Test/Bug Log Files/124000-124999/124764/JSONpathRParseresult.txt",
+		"/C/Users/kern.ding/Desktop/tem.json",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Resources/Metadata_ReadJson.txt",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/ActivityWarnings.Designer.cs",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/AssignTemplate/UI/FieldIndexControl.cs",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/AssignTemplate/UI/FieldIndexListControl.cs",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/AssignTemplate/UI/FieldIndexListControl.Designer.cs",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/AssignTemplate/UI/FieldIndexControl.Designer.cs",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/RetrieveFieldValue/UI/FieldsOptions.cs",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/AssignTemplate/UI/FieldIndexListControlHost.cs",
+		"/C/Users/kern.ding/Desktop/Workflow 1 (Debug).wfi",
+		"/C/Users/kern.ding/AppData/Roaming/Sublime Text 3/Packages/User/Package Control.sublime-settings",
+		"/C/Users/kern.ding/AppData/Roaming/Sublime Text 3/Packages/User/SublimeLinter.sublime-settings",
+		"/C/Code/Workflow/Trunk/Source/Web/Laserfiche.Workflow.WebDesigner/Laserfiche.Workflow.WebDesigner/bin/Laserfiche.I18n.xml",
+		"/C/Users/kern.ding/Documents/books.xml",
+		"/C/Code/Workflow/Trunk/Source/Web/Laserfiche.Workflow.WebDesigner/Laserfiche.Workflow.WebData/bin/Debug/wf.data.js",
+		"/C/Users/kern.ding/Desktop/te",
+		"/C/Users/kern.ding/Documents/R/LinerAlgebra.R",
+		"/C/Users/kern.ding/Documents/temp.js",
+		"/C/Users/kern.ding/Desktop/Laserfiche Example Request.txt",
+		"/C/Users/kern.ding/Desktop/Laserfiche Example Response.txt",
+		"/C/Code/Workflow/Trunk/Source/Web/Laserfiche.Workflow.WebDesigner/Tests/WebDesigner/WebDesigner.Scripts.Tests/Tests/Designer/test.resources.js",
+		"/C/Users/kern.ding/AppData/Local/Temp/testJson_2969 (2)/testJson.json",
+		"/C/Users/kern.ding/Desktop/books.xml",
+		"/C/Users/kern.ding/Desktop/testJson.json",
+		"/C/Users/kern.ding/AppData/Local/Temp/testJson_2969/testJson.json",
+		"/C/Code/Workflow/Trunk/Source/Designer/Workflow Designer Base/ComponentModel/Canvas/WorkflowBase.cs",
+		"/C/Users/kern.ding/Desktop/ReadJsonDialog.Designer.cs",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Resources/Metadata_ReadXml.txt",
+		"/C/Code/Workflow/Trunk/Laserfiche.Project/UI/Controls/ControlWithJPath.resx",
+		"/C/Code/Workflow/Trunk/Laserfiche.Project/UI/Controls/ControlWithJPath.Designer.cs",
+		"/C/Code/Workflow/Trunk/Laserfiche.Project/UI/Controls/ControlWithJPath.cs",
+		"/C/Users/kern.ding/AppData/Roaming/Sublime Text 3/Packages/User/Pretty JSON.sublime-settings",
+		"/C/Users/kern.ding/Desktop/testJson",
+		"/C/Code/Workflow/Trunk/Source/Workflow Build.sln",
+		"/C/Code/Workflow/Trunk/Source/Workflow Build - kern.sln",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/JSON/Runtime/JSonActivityTaskService.cs",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/JSON/Runtime/ReadJSonTaskOptions.cs",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/JSON/Runtime/ReadJSonTaskResult.cs",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/JSON/Runtime/IJSonActivityTaskService.cs",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/JSON/Runtime/IJSonTaskOptions.cs",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/JSON/Runtime/JSonModule.cs",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/JSON/UI/ReadJSonDialog.cs",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/JSON/UI/ReadJSonDialog.Designer.cs",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/JSON/UI/ReadJSonDialog.es.resx",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/JSON/UI/ReadJSonDialog.fr.resx",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/JSON/UI/ReadJSonDialog.resx",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/JSON/UI/ReadJSonEditControl.cs",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/JSON/UI/ReadJSonDialog.pt-BR.resx",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/JSON/UI/ReadJSonDialog.ar.resx",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/JSON/UI/ReadJSonEditControl.Designer.cs",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/JSON/UI/ReadJSonEditControl.resx",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/JSON/JSonParsingOptions.cs",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/JSON/ReadJSonActivityProxy.cs",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/JSON/JSonParsingResults.cs",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/JSON/ReadJSonOptions.cs",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/JSON/ReadJSonActivityValidator.cs",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/JSON/ReadJSonTaskActivity.cs",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/JSON/JSonParsingManager.cs",
+		"/C/Code/Workflow/Trunk/Laserfiche.Project/UI/Controls/ControlWithJSonPath.cs",
+		"/C/Code/Workflow/Trunk/Laserfiche.Project/UI/Controls/ControlWithJSonPath.Designer.cs",
+		"/C/Code/Workflow/Trunk/Laserfiche.Project/UI/Controls/ControlWithJSonPath.resx",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/JSON/UI/PromptForJsonDialog.cs",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/JSON/UI/PatternMatchingDialog.ar.resx",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/JSON/UI/PatternMatchingDialog.cs",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/JSON/UI/PatternMatchingDialog.Designer.cs",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/JSON/UI/PatternMatchingDialog.es.resx",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/JSON/UI/PatternMatchingDialog.fr.resx",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/JSON/UI/PatternMatchingDialog.pt-BR.resx",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/JSON/UI/PatternMatchingDialog.resx",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/JSON/UI/PatternMatchingEditControl.ar.resx",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/JSON/UI/PatternMatchingEditControl.cs",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/JSON/UI/PatternMatchingEditControl.Designer.cs",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/JSON/UI/PatternMatchingEditControl.es.resx",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/JSON/UI/PatternMatchingEditControl.fr.resx",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/JSON/UI/PatternMatchingEditControl.pt-BR.resx",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/JSON/UI/PatternMatchingEditControl.resx",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/JSON/UI/PromptForPatternDialog.ar.resx",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/JSON/UI/PromptForPatternDialog.cs",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/JSON/UI/PromptForPatternDialog.Designer.cs",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/JSON/UI/PromptForPatternDialog.es.resx",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/JSON/UI/PromptForPatternDialog.pt-BR.resx",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/JSON/UI/PromptForPatternDialog.fr.resx",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/JSON/UI/PromptForPatternDialog.resx",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/JSON/ReadJsonActivityProxy.cs",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/JSON/ReadJsonOptions.cs",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/JSON/ReadJsonActivity.cs",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/JSON/ReadJsonModule.cs",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/JSON/ReadJsonInformation.cs",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/JSON/PatternMatchingInformation.cs",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/JSON/PatternMatchingActivityProxy.cs",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/JSON/PatternMatchingActivity.cs",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/JSON/JSonOptions.cs",
+		"/C/Code/Workflow/Trunk/Source/Activities/Laserfiche.Workflow.Activities.82/Activities/JSON/PatternMatchingModule.cs",
+		"/C/Code/Workflow/Trunk/Source/Components/Laserfiche.Workflow.Common/Resources/HelpRedirect.txt",
+		"/C/Users/kern.ding/Downloads/dd1cef05-f152-417c-a40f-bbd5e9ce0086.ics",
+		"/C/Users/kern.ding/Downloads/7edbdfec-c250-40b8-a918-71198795089d.ics",
+		"/C/Users/kern.ding/Downloads/2fd4637d-ece7-4e6b-a757-ffdb786a3477.ics",
+		"/C/Users/kern.ding/Downloads/2681165a-152e-4628-a9da-98f55ad35078.ics",
+		"/C/Users/kern.ding/Downloads/6e4f79fe-f561-4628-b9f4-627e7351036c.ics",
+		"/C/Users/kern.ding/Downloads/1e2e71ee-56e0-4c9e-a02e-47dd3ffc28fb.ics",
+		"/C/Users/kern.ding/Downloads/58965508-5917-4361-99cb-34ab3f85fcf6.ics",
+		"/C/Users/kern.ding/Downloads/ad277416-f3fc-4980-b49f-fc3515a96525.ics",
+		"/C/Users/kern.ding/Downloads/248cbb5e-d298-4efb-8e08-1dbc1882aaf4.ics",
+		"/C/Users/kern.ding/Downloads/7429e898-78bc-4e2b-97ad-7ed65a6e2533.ics",
+		"/C/Users/kern.ding/Downloads/74732464-93c5-4176-adcc-85b87c89d3eb.ics",
+		"/C/Users/kern.ding/Downloads/7c8631e7-adc4-4748-b17e-4c328ad3a1df.ics",
+		"/C/Users/kern.ding/Downloads/invite.ics",
+		"/C/Users/kern.ding/Downloads/22feebd9-1c29-4f08-b8f6-c1944ffa1c7a.ics",
+		"/C/Users/kern.ding/Downloads/92577df7-ab44-426b-be95-1a6291919b9b.ics"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 90.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"AdditionalPropertiesEditControl",
+			"TokenFunctionPicker",
+			"AdditionalColumnOptions",
+			"svn",
+			"jpath",
+			"});",
+			"jpath expression",
+			"xpath expression",
+			"expression",
+			"readxml",
+			"xpath",
+			"XPath",
+			"\"",
+			"'",
+			"using System.JSon;",
+			"//",
+			"Xml",
+			"ReadJSon",
+			"Xml",
+			"ReadXml",
+			"Xml",
+			"ReadXml",
+			"Xml",
+			"ReadXml",
+			"Xml",
+			"ReadXml",
+			"Xml",
+			"ReadXml",
+			"XPath",
+			"PatternMatching",
+			"Pattern",
+			"PatternMatching",
+			"pattern",
+			"PatternMatching",
+			"pattern",
+			"PatternMatching",
+			"action"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"SortColumnControl",
+			"SortColumnDialog",
+			"FieldsOptions",
+			"JPath",
+			"",
+			"\"",
+			"using Newtonsoft.Json;",
+			"JSon",
+			"ReadXml",
+			"JSon",
+			"ReadJSon",
+			"JSon",
+			"ReadJSon",
+			"JSon",
+			"ReadJSon",
+			"JSon",
+			"ReadJSon",
+			"JSon",
+			"ReadJSon",
+			"JSonPath",
+			"ReadJson",
+			"Json"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.haskell_sublime_load":
+	{
+		"height": 100.0
+	},
+	"output.sftp":
+	{
+		"height": 0.0
+	},
+	"project": "ScoreGrass.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 215.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
