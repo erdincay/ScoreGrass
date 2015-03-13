@@ -1,5 +1,3 @@
-import numpy
-
 class ColorFilter:
 
     def __init__(self, image):

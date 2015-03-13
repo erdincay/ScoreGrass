@@ -6,8 +6,8 @@ from scipy import ndimage as nd
 __author__ = 'Kern'
 
 feature_method_name = 'Gabor'
-feature_name_mean = 'Mean{0}'
-feature_name_variance = 'Var{0}'
+feature_name_mean = 'mean{0}'
+feature_name_variance = 'var{0}'
 
 
 def generate_kernels(num):

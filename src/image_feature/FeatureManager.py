@@ -2,7 +2,7 @@ import pandas as pd
 
 from src.image_feature import GaborFilter
 from src.image_feature import GLCM
-
+from src.image_feature import ColorAnalyzer
 
 __author__ = 'kern.ding'
 
@@ -10,7 +10,8 @@ __author__ = 'kern.ding'
 def register_feature_calculators():
     return [
         lambda img: GaborFilter.compute_feats(img, GaborFilter.generate_kernels(1)),
-        lambda img: GLCM.compute_feats(img, [5], [0])
+        lambda img: GLCM.compute_feats(img, [5], [0]),
+        lambda img: ColorAnalyzer.compute_feats(img, 165, 255)
     ]
 
 

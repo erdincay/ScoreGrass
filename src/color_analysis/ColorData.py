@@ -1,10 +1,9 @@
-import numpy
-
 __author__ = 'Alec'
 
 """Class representing the basic color information of an image (i.e. average RGB/HSV values)."""
-class ColorData:
 
+
+class ColorData:
     def __init__(self, img):
         self.image = img
         self.avgR = 0.0
@@ -13,7 +12,6 @@ class ColorData:
         self.avgH = 0.0
         self.avgS = 0.0
         self.avgV = 0.0
-
 
     def calc_color_values(self):
         """

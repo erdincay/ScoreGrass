@@ -1,10 +1,9 @@
-from skimage import io
-import numpy
-from ColorData import ColorData
-from ColorFilter import ColorFilter
+from src.color_analysis.ColorData import ColorData
+from src.color_analysis.ColorFilter import ColorFilter
+
 __author__ = 'Alec'
 
-#323
+# 323
 
 def getColorVals(np):
     """
@@ -18,6 +17,7 @@ def getColorVals(np):
     c_data.calc_color_values()
 
     return c_data
+
 
 def getColorFilter(np):
     """

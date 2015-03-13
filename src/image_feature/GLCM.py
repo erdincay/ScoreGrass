@@ -5,8 +5,8 @@ from skimage.feature import greycoprops
 __author__ = 'Kern'
 
 feature_method_name = 'GLCM'
-feature_name_dissimilarity = 'Diss{0}'
-feature_name_correlation = 'Corr{0}'
+feature_name_dissimilarity = 'diss{0}'
+feature_name_correlation = 'corr{0}'
 
 def compute_feats(image, distances, angles):
     """
@@ -19,7 +19,6 @@ def compute_feats(image, distances, angles):
     glcm = greycomatrix(image, distances, angles, 256, symmetric=True, normed=True)
     dissimilarities = greycoprops(glcm, 'dissimilarity').flat
     correlations = greycoprops(glcm, 'correlation').flat
-    # np.array([[d, c] for d in dissimilarities for c in correlations])
 
     data = []
     label_l2 = []
