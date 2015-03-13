@@ -25,8 +25,6 @@ def find_edges(edge_map):
 
 def edge_coordinate(contours):
     ret = []
-
     for contour in contours:
         ret.extend(contour)
-
     return np.array(ret)

@@ -1,6 +1,8 @@
-import numpy as np
+import pandas as pd
+
 from src.image_feature import GaborFilter
 from src.image_feature import GLCM
+
 
 __author__ = 'kern.ding'
 
@@ -17,10 +19,10 @@ class FeatureManager:
         self.calculators = register_feature_calculators()
 
     def compute_feats(self, image):
-        feats = []
+        feats = pd.Series()
         for calculator in self.calculators:
-            feat = calculator(image).flatten()
-            feats.extend(feat)
+            feat = calculator(image)
+            feats.append(feat)
 
-        return np.array(feats)
+        return feats
 

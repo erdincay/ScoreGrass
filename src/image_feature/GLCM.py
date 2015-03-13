@@ -1,9 +1,11 @@
-import numpy as np
+import pandas as pd
 from skimage.feature import greycomatrix
 from skimage.feature import greycoprops
 
 __author__ = 'Kern'
 
+feature_name_dissimilarity = 'GLCM_Diss{0}'
+feature_name_correlation = 'GLCM_Corr{0}'
 
 def compute_feats(image, distances, angles):
     """
@@ -16,4 +18,11 @@ def compute_feats(image, distances, angles):
     glcm = greycomatrix(image, distances, angles, 256, symmetric=True, normed=True)
     dissimilarities = greycoprops(glcm, 'dissimilarity').flat
     correlations = greycoprops(glcm, 'correlation').flat
-    return np.array([[d, c] for d in dissimilarities for c in correlations])
+    # np.array([[d, c] for d in dissimilarities for c in correlations])
+
+    feat_dict = {}
+    for idx, (d, c) in enumerate(zip(dissimilarities, correlations)):
+        feat_dict[feature_name_dissimilarity.format(idx)] = d
+        feat_dict[feature_name_correlation.format(idx)] = c
+
+    return pd.Series(feat_dict)
