@@ -4,8 +4,9 @@ from skimage.feature import greycoprops
 
 __author__ = 'Kern'
 
-feature_name_dissimilarity = 'GLCM_Diss{0}'
-feature_name_correlation = 'GLCM_Corr{0}'
+feature_method_name = 'GLCM'
+feature_name_dissimilarity = 'Diss{0}'
+feature_name_correlation = 'Corr{0}'
 
 def compute_feats(image, distances, angles):
     """
@@ -13,16 +14,23 @@ def compute_feats(image, distances, angles):
     :param image: is just numpy array
     :param distances: List of pixel pair distance offsets
     :param angles: List of pixel pair angles in radians for the offsets
-    :return: numpy array [[diss1, corr1], [diss2, corr2], [diss3, corr3], [diss4, corr4]... ] stand for dissimilarity and correlation attribute of co-occurrence matrix  by different input parametes combinations [[dis1, ang1], [dis1, ang2],[dis2, ang1],[dis2, ang2]]. So there are totally len(distances) * len(angles) pairs of return features
+    :return: [[diss1, corr1], [diss2, corr2], [diss3, corr3], [diss4, corr4]... ] stand for dissimilarity and correlation attribute of co-occurrence matrix  by different input parametes combinations [[dis1, ang1], [dis1, ang2],[dis2, ang1],[dis2, ang2]]. So there are totally len(distances) * len(angles) pairs of return features, wrappd by pandas.Series
     """
     glcm = greycomatrix(image, distances, angles, 256, symmetric=True, normed=True)
     dissimilarities = greycoprops(glcm, 'dissimilarity').flat
     correlations = greycoprops(glcm, 'correlation').flat
     # np.array([[d, c] for d in dissimilarities for c in correlations])
 
-    feat_dict = {}
+    data = []
+    label_l2 = []
     for idx, (d, c) in enumerate(zip(dissimilarities, correlations)):
-        feat_dict[feature_name_dissimilarity.format(idx)] = d
-        feat_dict[feature_name_correlation.format(idx)] = c
+        data.append(d)
+        label_l2.append(feature_name_dissimilarity.format(idx))
 
-    return pd.Series(feat_dict)
+        data.append(c)
+        label_l2.append(feature_name_correlation.format(idx))
+
+    label_l1 = [feature_method_name] * len(data)
+    index = pd.MultiIndex.from_tuples(list(zip(label_l1, label_l2)), names=['method', 'attr'])
+
+    return pd.Series(data, index)

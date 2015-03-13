@@ -19,6 +19,11 @@ class FeatureManager:
         self.calculators = register_feature_calculators()
 
     def compute_feats(self, image):
+        """
+        merge different feature calculator output together
+        :param image:
+        :return: 
+        """
         feats = pd.Series()
         for calculator in self.calculators:
             feat = calculator(image)
