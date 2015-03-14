@@ -11,7 +11,7 @@ def register_feature_calculators():
     return [
         lambda img: GaborFilter.compute_feats(img, GaborFilter.generate_kernels(1)),
         lambda img: GLCM.compute_feats(img, [5], [0]),
-        lambda img: ColorAnalyzer.compute_feats(img, 165, 255)
+        lambda img: ColorAnalyzer.compute_feats(img, 150, 255, ColorAnalyzer.ColorChannel.Green)
     ]
 
 
