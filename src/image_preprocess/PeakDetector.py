@@ -1,9 +1,12 @@
 from skimage import img_as_float
 from skimage import color
+from skimage import io
 import numpy as np
 from skimage.feature import peak_local_max, corner_peaks
 
 __author__ = 'Kern'
+
+io.use_plugin('matplotlib')
 
 
 def generate_color_map(image, color_mask):
@@ -26,11 +29,11 @@ def generate_pink_map(image):
     return generate_color_map(image, (1, 0.5, 0.5))
 
 
-def peak_detector(distance_map, threshold, min_d):
-    return peak_local_max(distance_map, threshold_rel=threshold, min_distance=min_d, num_peaks=8)
+def peak_detector(distance_map, threshold, min_d, num_peaks=6):
+    return peak_local_max(distance_map, threshold_rel=threshold, min_distance=min_d, num_peaks=num_peaks)
 
 
-def peak_corner_detector(distance_map, threshold, min_d):
+def peak_corner_detector(distance_map, threshold, min_d, num_peaks=6):
     """
     well, no idea what is the difference from skimage.feature.peak_local_max
     :param distance_map:
@@ -38,4 +41,4 @@ def peak_corner_detector(distance_map, threshold, min_d):
     :param min_d:
     :return:
     """
-    return corner_peaks(distance_map, threshold_rel=threshold, min_distance=min_d, num_peaks=8)
+    return corner_peaks(distance_map, threshold_rel=threshold, min_distance=min_d, num_peaks=num_peaks)

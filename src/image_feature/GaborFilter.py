@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-from skimage.filter import gabor_kernel
+from skimage.filters import gabor_kernel
 from scipy import ndimage as nd
 
 __author__ = 'Kern'
@@ -13,7 +13,7 @@ feature_name_variance = 'var{0}'
 def generate_kernels(num):
     kernels = []
     for theta in range(num):
-        theta = theta / num * np.pi
+        theta = theta / float(num) * np.pi
         for sigma in (1, 3):
             for frequency in (0.05, 0.25):
                 kernel = np.real(gabor_kernel(frequency, theta=theta, sigma_x=sigma, sigma_y=sigma))

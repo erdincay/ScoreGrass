@@ -8,6 +8,7 @@ feature_method_name = 'GLCM'
 feature_name_dissimilarity = 'diss{0}'
 feature_name_correlation = 'corr{0}'
 
+
 def compute_feats(image, distances, angles):
     """
     compute the texture feature by grey level co-occurrence matrices

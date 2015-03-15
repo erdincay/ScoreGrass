@@ -1,4 +1,5 @@
 import pandas as pd
+from skimage.color import rgb2grey
 
 from src.image_feature import GaborFilter
 from src.image_feature import GLCM
@@ -9,26 +10,21 @@ __author__ = 'kern.ding'
 
 def register_feature_calculators():
     return [
-        lambda img: GaborFilter.compute_feats(img, GaborFilter.generate_kernels(1)),
-        lambda img: GLCM.compute_feats(img, [5], [0]),
+        # lambda img: GaborFilter.compute_feats(img, GaborFilter.generate_kernels(1)),
+        lambda img: GLCM.compute_feats(rgb2grey(img), [5], [0]),
         lambda img: ColorAnalyzer.compute_feats(img, 150, 255, ColorAnalyzer.ColorChannel.Green)
     ]
 
 
-class FeatureManager:
-    def __init__(self):
-        self.calculators = register_feature_calculators()
+def compute_feats(image):
+    """
+    merge different feature calculator output together
+    :param image:
+    :return:
+    """
+    feats = pd.Series()
+    for calculator in register_feature_calculators():
+        feat = calculator(image)
+        feats = feats.append(feat)
 
-    def compute_feats(self, image):
-        """
-        merge different feature calculator output together
-        :param image:
-        :return: 
-        """
-        feats = pd.Series()
-        for calculator in self.calculators:
-            feat = calculator(image)
-            feats.append(feat)
-
-        return feats
-
+    return feats

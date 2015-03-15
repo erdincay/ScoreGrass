@@ -27,6 +27,7 @@ images = (brick, grass, wall)
 
 # prepare reference features
 kernels = generate_kernels(4)
+
 ref_feats = np.zeros((3, len(kernels), 2), dtype=np.double)
 ref_feats[0, :, :] = compute_feats(brick, kernels)
 ref_feats[1, :, :] = compute_feats(grass, kernels)
