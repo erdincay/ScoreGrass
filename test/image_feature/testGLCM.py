@@ -29,9 +29,10 @@ for loc in sky_locations:
 xs = []
 ys = []
 for i, patch in enumerate(grass_patches + sky_patches):
-    feats = compute_features(patch, [5], [0])
-    xs.append(feats[0, 0])
-    ys.append(feats[0, 1])
+    feats = compute_feats(patch, [5], [0])
+    print(feats)
+    xs.append(feats.loc[feature_method_name, feature_name_dissimilarity.format(0)])
+    ys.append(feats.loc[feature_method_name, feature_name_correlation.format(0)])
 
 # create the figure
 fig = plt.figure(figsize=(8, 8))

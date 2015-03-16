@@ -18,8 +18,11 @@ def generate_kernels(num):
             for frequency in (0.05, 0.25):
                 kernel = np.real(gabor_kernel(frequency, theta=theta, sigma_x=sigma, sigma_y=sigma))
                 kernels.append(kernel)
-
     return kernels
+
+
+def generate_kernel(frequency, theta, sigma):
+    return np.real(gabor_kernel(frequency, theta=theta, sigma_x=sigma, sigma_y=sigma))
 
 
 def compute_feats(image, kernels):

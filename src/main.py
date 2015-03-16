@@ -2,6 +2,7 @@ import os
 import sys
 
 import pandas as pd
+from datetime import datetime
 
 from src.file_io import FileOrganizer
 from src.image_feature import FeatureManager
@@ -36,4 +37,5 @@ for img, info in training_data:
     feats_list.append(feats)
 
 feat_df = pd.DataFrame(feats_list)
-FileOrganizer.save_dataframe(feat_df, os.path.join(feature_data_home, 'features'))
+FileOrganizer.save_dataframe(feat_df, os.path.join(feature_data_home,
+                                                   'features ' + datetime.strftime(datetime.now().date(), '%Y-%m-%d')))
