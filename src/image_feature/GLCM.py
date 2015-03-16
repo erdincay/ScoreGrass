@@ -7,6 +7,7 @@ __author__ = 'Kern'
 feature_method_name = 'GLCM'
 feature_name_dissimilarity = 'diss{0}'
 feature_name_correlation = 'corr{0}'
+feature_name_energy = 'eng{0}'
 
 
 def compute_feats(image, distances, angles):
@@ -20,15 +21,19 @@ def compute_feats(image, distances, angles):
     glcm = greycomatrix(image, distances, angles, 256, symmetric=True, normed=True)
     dissimilarities = greycoprops(glcm, 'dissimilarity').flat
     correlations = greycoprops(glcm, 'correlation').flat
+    energy = greycoprops(glcm, 'energy').flat
 
     data = []
     label_l2 = []
-    for idx, (d, c) in enumerate(zip(dissimilarities, correlations)):
+    for idx, (d, c, e) in enumerate(zip(dissimilarities, correlations, energy)):
         data.append(d)
         label_l2.append(feature_name_dissimilarity.format(idx))
 
         data.append(c)
         label_l2.append(feature_name_correlation.format(idx))
+
+        data.append(e)
+        label_l2.append(feature_name_energy.format(idx))
 
     label_l1 = [feature_method_name] * len(data)
     index = pd.MultiIndex.from_tuples(list(zip(label_l1, label_l2)), names=['method', 'attr'])
