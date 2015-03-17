@@ -20,7 +20,7 @@ image_dot = io.imread(path_dot)
 image_frame = io.imread(path_frame)
 
 distance_mark = generate_pink_map(image_dot)
-coords_mark = peak_corner_detector(distance_mark, 0.825, 80)
+coords_mark = peak_corner_detector(distance_mark, 0.825, 80, 9)
 crop_dot = diagonal_cropping(image_dot, coords_mark, lambda coords: sequence_extreme_value(coords, 1))
 
 binary_image = binarize(image_frame)
@@ -49,3 +49,5 @@ frame3.imshow(crop_frame)
 frame3.set_title('Cropped Image')
 
 plt.show()
+
+io.imsave('test.jpg', crop_dot)

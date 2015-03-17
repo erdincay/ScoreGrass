@@ -25,9 +25,4 @@ def compute_feats(image):
     :param image:
     :return:
     """
-    feats = pd.Series()
-    for calculator in register_feature_calculators():
-        feat = calculator(image)
-        feats = feats.append(feat)
-
-    return feats
+    return pd.concat([calculator(image) for calculator in register_feature_calculators()])

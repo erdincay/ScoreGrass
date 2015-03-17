@@ -30,12 +30,8 @@ training_data = FileOrganizer.prepare_training_data(excel_dataframe, image_dict,
                                                     quality_column_name)
 
 # feature extraction
-feats_list = []
-for img, info in training_data:
-    feats = FeatureManager.compute_feats(img)
-    feats = feats.append(info)
-    feats_list.append(feats)
+feats_list = [FeatureManager.compute_feats(img).append(info) for img, info in training_data]
 
 feat_df = pd.DataFrame(feats_list)
 FileOrganizer.save_dataframe(feat_df, os.path.join(feature_data_home,
-                                                   'features ' + datetime.strftime(datetime.now().date(), '%Y-%m-%d')))
+                                                   'features ' + datetime.now().strftime("%Y-%m-%d %H.%M.%S")))

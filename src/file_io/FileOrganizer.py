@@ -12,11 +12,8 @@ l2_label_name = 'Subjective'
 
 
 def load_preprocessed(image_collection):
-    ret = {}
-    for img, img_path in zip(image_collection, image_collection.files):
-        name = PreprocessingManager.get_file_name(img_path)
-        ret[name] = img
-    return ret
+    return {PreprocessingManager.get_file_name(img_path): img for img, img_path in
+            zip(image_collection, image_collection.files)}
 
 
 def prepare_preprocessing_image(excel_df, preprocessed_path, original_path, file_column_name):
@@ -40,15 +37,9 @@ def prepare_training_data(excel_df, image_dict, file_column_name, color_column_n
     name_list = [file_column_name, color_column_name, quality_column_name]
     multi_index_list = [[l2_label_name] * len(name_list), name_list]
 
-    ret = []
-    for index, row in excel_df.iterrows():
-        file_name = row[file_column_name]
-        if file_name in image_dict:
-            series = pd.Series((row[name_list]).tolist(), multi_index_list)
-            ret.append((image_dict[file_name], series))
-    return ret
+    return [(image_dict[row[file_column_name]], pd.Series((row[name_list]).tolist(), multi_index_list))
+            for index, row in excel_df.iterrows() if row[file_column_name] in image_dict]
 
 
 def save_dataframe(dataframe, filename):
-    # dataframe.reset_index().to_json(filename + '.json')
     dataframe.to_csv(filename + '.csv')
