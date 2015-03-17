@@ -1,5 +1,5 @@
 import os
-
+import pandas as pd
 import numpy as np
 from skimage import io
 
@@ -7,6 +7,8 @@ from src.image_preprocess import PreprocessingManager
 
 
 __author__ = 'Kern'
+
+l2_label_name = 'Subjective'
 
 
 def load_preprocessed(image_collection):
@@ -35,11 +37,15 @@ def prepare_preprocessing_image(excel_df, preprocessed_path, original_path, file
 
 
 def prepare_training_data(excel_df, image_dict, file_column_name, color_column_name, quality_column_name):
+    name_list = [file_column_name, color_column_name, quality_column_name]
+    multi_index_list = [[l2_label_name] * len(name_list), name_list]
+
     ret = []
     for index, row in excel_df.iterrows():
         file_name = row[file_column_name]
         if file_name in image_dict:
-            ret.append((image_dict[file_name], row[[file_column_name, color_column_name, quality_column_name]]))
+            series = pd.Series((row[name_list]).tolist(), multi_index_list)
+            ret.append((image_dict[file_name], series))
     return ret
 
 
