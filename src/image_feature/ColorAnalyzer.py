@@ -49,12 +49,10 @@ def compute_feats(image, minimum, maximum, color_channel):
     if color_channel == ColorChannel.Hue:
         img_hsv = color.rgb2hsv(image)
         single_avr = average_color(img_hsv[:, :, 0])
-        single_cover, single_filtered = color_coverage(img_hsv[:, :, 0], hue_range_to_float(minimum),
-                                                       hue_range_to_float(maximum))
+        single_cover, single_filtered = color_coverage(img_hsv[:, :, 0], hue_range_to_float(minimum), hue_range_to_float(maximum))
     else:
         single_avr = average_color(image[:, :, color_channel.value[0] - 1])
-        single_cover, single_filtered = color_coverage(image[:, :, color_channel.value[0] - 1],
-                                                       rgb_range_to_float(minimum), rgb_range_to_float(maximum))
+        single_cover, single_filtered = color_coverage(image[:, :, color_channel.value[0] - 1],rgb_range_to_float(minimum), rgb_range_to_float(maximum))
 
     label_l2 = [feature_name_average, feature_name_coverage, feature_name_filtered]
     label_l1 = [color_channel.name] * len(label_l2)

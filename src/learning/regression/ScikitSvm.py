@@ -1,6 +1,7 @@
-import numpy as np
 from sklearn.svm import SVR
-from ..preprocess.CrossValidation import train_test_split
+
+from src.learning.evaluation.CrossValidation import train_test_split
+
 
 __author__ = 'Kern'
 

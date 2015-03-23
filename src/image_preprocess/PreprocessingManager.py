@@ -1,5 +1,6 @@
 from enum import Enum
 
+from src.file_io import PublicSupport
 from src.image_preprocess import EdgeDetector
 from src.image_preprocess import PeakDetector
 from src.image_preprocess import Cropper
@@ -15,10 +16,6 @@ class CropType(Enum):
     dot = 1,
     frame = 2,
     none = 3
-
-
-def get_file_name(path):
-    return str.split(path, '\\')[-1]
 
 
 def crop_image_by_pink_dot(image):
@@ -47,7 +44,7 @@ def crop_image(image, crop_type):
 
 
 def map_crop_type(path):
-    name = get_file_name(path)
+    name = PublicSupport.extract_filename_by_path(path)
     crop_type = CropType.none
     if crop_by_dot in name.lower():
         crop_type = CropType.dot

@@ -2,11 +2,10 @@ from pybrain.datasets.sequential import SequentialDataSet
 from pybrain.structure.connections.full import FullConnection
 from pybrain.structure.modules.linearlayer import LinearLayer
 from pybrain.structure.modules.sigmoidlayer import SigmoidLayer
-
 from pybrain.structure.networks.feedforward import FeedForwardNetwork
 from pybrain.supervised.trainers.backprop import BackpropTrainer
 
-from src.learning.preprocess.CrossValidation import data_set_split
+from src.learning.evaluation.CrossValidation import data_set_split
 
 
 __author__ = 'Kern'

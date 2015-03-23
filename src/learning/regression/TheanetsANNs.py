@@ -1,5 +1,7 @@
 import theanets
-from ..preprocess.CrossValidation import train_test_split
+
+from src.learning.evaluation.CrossValidation import train_test_split
+
 
 __author__ = 'Kern'
 
