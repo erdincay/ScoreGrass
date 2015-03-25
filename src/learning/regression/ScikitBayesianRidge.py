@@ -3,7 +3,7 @@ from sklearn.linear_model import BayesianRidge
 __author__ = 'Kern'
 
 
-class ScikitBayesianRidge:
+class BayesianRidge:
     def __init__(self):
         self.clf = BayesianRidge(alpha_1=1e-06, alpha_2=1e-06, compute_score=False,
                                  copy_X=True, fit_intercept=True, lambda_1=1e-06, lambda_2=1e-06,

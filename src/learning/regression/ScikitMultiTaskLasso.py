@@ -3,7 +3,7 @@ from sklearn.linear_model import MultiTaskLasso
 __author__ = 'Kern'
 
 
-class ScikitMultiTaskLasso:
+class MultiTaskLasso:
     def __init__(self):
         self.clf = MultiTaskLasso(alpha=0.1, copy_X=True, fit_intercept=True, max_iter=1000, normalize=False,
                                   tol=0.0001, warm_start=False)

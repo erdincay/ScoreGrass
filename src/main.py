@@ -50,12 +50,16 @@ def train():
     y_data = feat_df[subjective_column_name]
 
     x_train, x_test, y_train, y_test = CrossValidation.data_set_split(0.3)(x_data, y_data)
-    scaler = Preprocessor.Standardization(x_train)
-    x_train_scaled = scaler.transform(x_train)
-    x_test_scaled = scaler.transform(x_test)
+    scalar = Preprocessor.Standardization(x_train)
+    x_train_scaled = scalar.transform(x_train)
+    x_test_scaled = scalar.transform(x_test)
 
 
-def predict():
+
+    return scalar
+
+
+def predict(scalar):
     image_dict = PredictorManager.prepare_preprocessing_image(preprocessed_data_home, original_data_home, "*.jpg")
     prediction_data = PredictorManager.prepare_training_data(image_dict, file_column_name, subjective_column_name)
     feat_df = feature(prediction_data)
@@ -63,6 +67,8 @@ def predict():
     x_data = feat_df.drop(subjective_column_name, axis=1)
     y_data = feat_df[subjective_column_name]
 
+    x_data_scaled = scalar.transform(x_data)
 
-train()
-predict()
+
+scalar = train()
+predict(scalar)
