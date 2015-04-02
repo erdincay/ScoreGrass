@@ -1,29 +1,20 @@
 import os
 import sys
+from datetime import datetime
 
 import pandas as pd
-from datetime import datetime
 
 from src.file_io import SampleManager
 from src.file_io import PredictorManager
 from src.file_io import PublicSupport
 from src.image_feature import FeatureManager
-from src.learning.evaluation import CrossValidation
-from src.learning.preprocess import Preprocessor
+from src.learning import ColorRegression
+from src.learning import QualityRegression
+from src.learning import MixedRegression
 
 __author__ = 'Kern'
 
-
-def feature(image_data):
-    # feature extraction
-    feats_list = [FeatureManager.compute_feats(img).append(info) for img, info in image_data]
-    feat_df = pd.DataFrame(feats_list)
-    PublicSupport.save_dataframe(feat_df, os.path.join(feature_data_home, 'features ' + datetime.now().strftime("%Y-%m-%d %H.%M.%S")))
-
-    return feat_df
-
-
-if len(sys.argv) < 12:
+if len(sys.argv) < 13:
     raise ValueError("Usage:", sys.argv[0], " Missing some argument to indicate input files")
 
 data_home = os.path.abspath(sys.argv[1])
@@ -37,6 +28,16 @@ file_column_name = sys.argv[8]
 color_column_name = sys.argv[9]
 quality_column_name = sys.argv[10]
 subjective_column_name = sys.argv[11]
+hue_column_name = sys.argv[12]
+
+
+def feature(images_data):
+    # feature extraction
+    feats_list = [FeatureManager.compute_feats(img).append(info) for img, info in images_data]
+    feat_df = pd.DataFrame(feats_list)
+    PublicSupport.save_dataframe(feat_df, os.path.join(feature_data_home, 'features ' + datetime.now().strftime("%Y-%m-%d %H.%M.%S")))
+
+    return feat_df
 
 
 def train():
@@ -49,17 +50,26 @@ def train():
     x_data = feat_df.drop(subjective_column_name, axis=1)
     y_data = feat_df[subjective_column_name]
 
-    x_train, x_test, y_train, y_test = CrossValidation.data_set_split(0.3)(x_data, y_data)
-    scalar = Preprocessor.Standardization(x_train)
-    x_train_scaled = scalar.transform(x_train)
-    x_test_scaled = scalar.transform(x_test)
+    # simple linear models to train on color score
+    color_models = ColorRegression.ColorRegression()
+    color_models.train(x_data[hue_column_name], y_data[subjective_column_name, color_column_name])
+
+    # kinds of models to train on quality score
+    quality_x = x_data
+    quality_y = y_data[subjective_column_name, quality_column_name]
+    quality_models = QualityRegression.QualityRegression(len(quality_x.columns), len(quality_y.columns))
+    quality_models.train(quality_x, quality_y)
+
+    # modes to train on both color and quality
+    mixed_x = x_data
+    mixed_y = y_data[subjective_column_name][color_column_name, quality_column_name]
+    mixed_models = MixedRegression.MixedRegression(len(mixed_x.columns), len(mixed_y.columns))
+    mixed_models.train(mixed_x, mixed_y)
+
+    return color_models, quality_models, mixed_models
 
 
-
-    return scalar
-
-
-def predict(scalar):
+def predict(color_models, quality_models, mixed_models):
     image_dict = PredictorManager.prepare_preprocessing_image(preprocessed_data_home, original_data_home, "*.jpg")
     prediction_data = PredictorManager.prepare_training_data(image_dict, file_column_name, subjective_column_name)
     feat_df = feature(prediction_data)
@@ -67,8 +77,8 @@ def predict(scalar):
     x_data = feat_df.drop(subjective_column_name, axis=1)
     y_data = feat_df[subjective_column_name]
 
-    x_data_scaled = scalar.transform(x_data)
+    color_models.predict(x_data)
+    quality_models.predict(x_data)
+    mixed_models.predict(x_data)
 
-
-scalar = train()
-predict(scalar)
+predict(*train())

@@ -4,8 +4,8 @@ __author__ = 'Kern'
 
 
 class ScikitModel:
-    def __init__(self):
-        self.model = None
+    def __init__(self, model):
+        self.model = model
 
     def train(self, x_data, y_data):
         self.model.fit(x_data, y_data)

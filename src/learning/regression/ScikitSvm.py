@@ -9,5 +9,4 @@ __author__ = 'Kern'
 
 class ScikitSvm(ScikitModel):
     def __init__(self, knr):
-        ScikitModel.__init__(self)
-        self.model = SVR(kernel=knr)
+        super().__init__(SVR(kernel=knr))

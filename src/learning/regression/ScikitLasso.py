@@ -6,5 +6,4 @@ __author__ = 'Kern'
 
 class Lasso(ScikitModel):
     def __init__(self):
-        ScikitModel.__init__(self)
-        self.model = Lasso(alpha=0.1)
+        super().__init__(Lasso(alpha=0.1))
