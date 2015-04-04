@@ -8,9 +8,8 @@ from src.file_io import SampleManager
 from src.file_io import PredictorManager
 from src.file_io import PublicSupport
 from src.image_feature import FeatureManager
-from src.learning import ColorRegression
-from src.learning import QualityRegression
-from src.learning import MixedRegression
+from src.learning.strategy import ColorRegression, MixedRegression, QualityRegression
+
 
 __author__ = 'Kern'
 

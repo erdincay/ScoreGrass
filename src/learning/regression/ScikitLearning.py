@@ -4,7 +4,8 @@ __author__ = 'Kern'
 
 
 class ScikitModel:
-    def __init__(self, model):
+    def __init__(self, model, s_id):
+        self.serialize_id = s_id
         self.model = model
 
     def train(self, x_data, y_data):

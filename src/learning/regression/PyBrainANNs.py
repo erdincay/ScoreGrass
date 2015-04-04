@@ -11,7 +11,8 @@ __author__ = 'Kern'
 
 
 class PyBrainANNs:
-    def __init__(self, x_dim, y_dim, hidden_size):
+    def __init__(self, x_dim, y_dim, hidden_size, s_id):
+        self.serialize_id = s_id
         self.net = FeedForwardNetwork()
 
         in_layer = LinearLayer(x_dim)
