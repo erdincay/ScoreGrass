@@ -13,9 +13,9 @@ def _register_regression(x_dim, y_dim):
     return [
         (ModelType.train_only, ScikitBayesianRidge.BayesianRidge(combine_name(QualityRegression.__name__, ScikitBayesianRidge.BayesianRidge.__name__))),
         (ModelType.train_only, ScikitMultiTaskLasso.MultiTaskLasso(combine_name(QualityRegression.__name__, ScikitMultiTaskLasso.MultiTaskLasso.__name__))),
-        (ModelType.train_only, ScikitSvm.ScikitSvm('rbf'), combine_name(QualityRegression.__name__, ScikitSvm.ScikitSvm.__name__)),
-        (ModelType.train_test, TheanetsANNs.TheanetsANNs(x_dim, y_dim, x_dim / 2), combine_name(QualityRegression.__name__, TheanetsANNs.TheanetsANNs.__name__)),
-        (ModelType.train_only, PyBrainANNs.PyBrainANNs(x_dim, y_dim, x_dim / 2), combine_name(QualityRegression.__name__, PyBrainANNs.PyBrainANNs.__name__))
+        (ModelType.train_only, ScikitSvm.ScikitSvm('rbf', combine_name(QualityRegression.__name__, ScikitSvm.ScikitSvm.__name__))),
+        (ModelType.train_test, TheanetsANNs.TheanetsANNs(x_dim, y_dim, x_dim / 2, combine_name(QualityRegression.__name__, TheanetsANNs.TheanetsANNs.__name__))),
+        (ModelType.train_only, PyBrainANNs.PyBrainANNs(x_dim, y_dim, x_dim / 2, combine_name(QualityRegression.__name__, PyBrainANNs.PyBrainANNs.__name__)))
     ]
 
 
