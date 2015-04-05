@@ -1,4 +1,5 @@
 import theanets
+import numpy as np
 
 __author__ = 'Kern'
 
@@ -8,13 +9,13 @@ class TheanetsANNs:
         self.serialize_id = s_id
         self.exp = theanets.Experiment(theanets.Regressor, layers=(x_dim, hidden_size, y_dim))
 
-    def train(self, x_train, y_train, x_test, y_test):
-        assert (x_train.shape[0] == y_train.shape[0])
-        assert (x_test.shape[0] == y_test.shape[0])
-        assert (x_train.shape[1] == x_test.shape[1])
-        assert (y_train.shape[1] == y_test.shape[1])
+    def train(self, x_data, y_data):
+        assert (x_data.shape[0] == y_data.shape[0])
 
-        return self.exp.train((x_train, y_train), (x_test, y_test))
+        if len(y_data.shape) == 1:
+            y_matrix = np.matrix(y_data).T
+
+        return self.exp.train((x_data, y_matrix))
 
     def predict(self, x_data):
         return self.exp.network.predict(x_data)

@@ -1,3 +1,4 @@
+import numpy as np
 from pybrain.datasets.sequential import SequentialDataSet
 from pybrain.structure.connections.full import FullConnection
 from pybrain.structure.modules.linearlayer import LinearLayer
@@ -5,6 +6,7 @@ from pybrain.structure.modules.sigmoidlayer import SigmoidLayer
 from pybrain.structure.networks.feedforward import FeedForwardNetwork
 from pybrain.supervised.trainers.backprop import BackpropTrainer
 from sklearn.externals import joblib
+from src.learning.strategy.RegressionManager import feature_dimensions
 
 
 __author__ = 'Kern'
@@ -32,9 +34,13 @@ class PyBrainANNs:
     def train(self, x_data, y_data):
         assert (x_data.shape[0] == y_data.shape[0])
 
-        train_data_set = SequentialDataSet(x_data.shape[1], y_data.shape[1])
+
+        if len(y_data.shape) == 1:
+            y_matrix = np.matrix(y_data).T
+
+        train_data_set = SequentialDataSet(feature_dimensions(x_data), feature_dimensions(y_matrix))
         train_data_set.setField("input", x_data)
-        train_data_set.setField("target", y_data)
+        train_data_set.setField("target", y_matrix)
 
         trainer = BackpropTrainer(self.net, train_data_set)
         trainer.train()

@@ -12,7 +12,7 @@ def train_test_split(factor):
     """
 
     def function(x_data, y_data):
-        cross_validation.train_test_split(x_data, y_data, test_size=factor, random_state=0)
+        return cross_validation.train_test_split(x_data, y_data, test_size=factor, random_state=0)
 
     return function
 
@@ -40,6 +40,6 @@ def data_set_split(factor):
     """
 
     def function(data_set):
-        data_set.splitWithProportion(1-factor)
+        return data_set.splitWithProportion(1-factor)
 
     return function

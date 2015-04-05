@@ -11,8 +11,10 @@ l2_label_name = 'Subjective'
 
 
 def load_images(image_collection):
-    return {PublicSupport.extract_filename_by_path(img_path): img for img, img_path in
-            zip(image_collection, image_collection.files)}
+    return {
+        PublicSupport.extract_filename_by_path(img_path): img for img, img_path in
+        zip(image_collection, image_collection.files)
+    }
 
 
 def prepare_images(filename_list, original_path, preprocessed_path):
