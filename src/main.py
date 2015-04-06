@@ -103,7 +103,7 @@ with open(sys.argv[1]) as json_stream:
 json_stream.close()
 
 # folder struct
-data_home = json_dict['data_home']
+data_home = os.path.abspath(json_dict['data_home'])
 create_path(data_home)
 original_data_home = os.path.join(data_home, json_dict['original_data_home'])
 create_path(original_data_home)
