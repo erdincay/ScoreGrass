@@ -91,8 +91,8 @@ def train():
 
 
 def predict(color_models, quality_models, mixed_models):
-    # feat_df = calc_features(False)
-    feat_df = load_features(feature_data_home, '*prediction*.csv')
+    feat_df = calc_features(False)
+    # feat_df = load_features(feature_data_home, '*prediction*.csv')
 
     x_data = feat_df.drop(subjective_column_name, axis=1, level=0)
 

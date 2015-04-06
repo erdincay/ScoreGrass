@@ -14,8 +14,15 @@ def save_dataframe(dataframe, filename):
 
 
 def load_dataframe(filename):
-    return pd.read_csv(filename, header=[0, 1])
+    if filename and os.path.isfile(filename):
+        return pd.read_csv(filename, header=[0, 1], index_col=0)
+
+    return None
 
 
 def find_newest_file(filepath, pattern):
-    return max([os.path.join(filepath, file) for file in os.listdir(filepath) if fnmatch.fnmatch(file, pattern)], key=os.path.getctime)
+    file_list = [os.path.join(filepath, file) for file in os.listdir(filepath) if fnmatch.fnmatch(file, pattern)]
+    if file_list:
+        return max(file_list, key=os.path.getctime)
+
+    return None
