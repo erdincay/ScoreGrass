@@ -1,0 +1,15 @@
+{
+  "data_home": "..//data",
+  "original_data_home": "original",
+  "predict_data_home": "new",
+  "preprocessed_folder": "preprocess",
+  "feature_data_home": "feat",
+  "model_data_home": "model",
+  "excel_file_path": "Data for summer pictures.xlsx",
+  "excel_sheet_name": "Sheet1",
+  "file_column_name": "File Name",
+  "color_column_name": "Subjective Color Rating",
+  "quality_column_name": "Subjective Quality Rating",
+  "subjective_column_name": "Subjective",
+  "hue_column_name": "Hue"
+}

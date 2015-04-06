@@ -1,9 +1,10 @@
+import json
 import os
 import sys
-from datetime import datetime
 
 import pandas as pd
 
+from datetime import datetime
 from src.file_io import SampleManager
 from src.file_io import PredictorManager
 from src.file_io import PublicSupport
@@ -13,24 +14,8 @@ from src.learning.strategy import QualityRegression
 from src.learning.strategy import ColorRegression
 from src.learning.strategy.RegressionManager import feature_dimensions
 
+
 __author__ = 'Kern'
-
-if len(sys.argv) < 14:
-    raise ValueError("Usage:", sys.argv[0], " Missing some argument to indicate input files")
-
-data_home = os.path.abspath(sys.argv[1])
-original_data_home = os.path.join(data_home, sys.argv[2])
-predict_data_home = os.path.join(data_home, sys.argv[3])
-preprocessed_folder = sys.argv[4]
-feature_data_home = os.path.join(data_home, sys.argv[5])
-model_data_home = os.path.join(data_home, sys.argv[6])
-excel_file_path = os.path.join(original_data_home, sys.argv[7])
-excel_sheet_name = sys.argv[8]
-file_column_name = sys.argv[9]
-color_column_name = sys.argv[10]
-quality_column_name = sys.argv[11]
-subjective_column_name = sys.argv[12]
-hue_column_name = sys.argv[13]
 
 
 def feature(images_data, feature_name):
@@ -45,13 +30,17 @@ def feature(images_data, feature_name):
 def calc_features(b_training):
     if b_training:
         # load file and image preprocessing
-        excel_dataframe = (pd.read_excel(excel_file_path, excel_sheet_name, index_col=None, na_values=['NA'])).dropna(axis=0)
-        image_dict = SampleManager.prepare_preprocessing_image(excel_dataframe, os.path.join(original_data_home, preprocessed_folder), original_data_home, file_column_name)
+        excel_dataframe = (pd.read_excel(excel_file, excel_sheet_name, index_col=None, na_values=['NA'])).dropna(axis=0)
+        preprocessed_path = os.path.join(original_data_home, preprocessed_folder)
+        create_path(preprocessed_path)
+        image_dict = SampleManager.prepare_preprocessing_image(excel_dataframe, preprocessed_path, original_data_home, file_column_name)
         training_data = SampleManager.prepare_training_data(excel_dataframe, image_dict, file_column_name, color_column_name, quality_column_name, subjective_column_name)
         feat_df = feature(training_data, 'feature_train')
     else:
         # load file and image preprocessing
-        image_dict = PredictorManager.prepare_preprocessing_image(os.path.join(predict_data_home, preprocessed_folder), predict_data_home, "*.jpg")
+        preprocessed_path = os.path.join(predict_data_home, preprocessed_folder)
+        create_path(preprocessed_path)
+        image_dict = PredictorManager.prepare_preprocessing_image(preprocessed_path, predict_data_home, "*.jpg")
         prediction_data = PredictorManager.prepare_training_data(image_dict, file_column_name, subjective_column_name)
         feat_df = feature(prediction_data, 'feature_prediction')
 
@@ -99,5 +88,42 @@ def predict(color_models, quality_models, mixed_models):
     print(color_models.predict(x_data[hue_column_name]))
     print(quality_models.predict(x_data))
     print(mixed_models.predict(x_data))
+
+
+def create_path(path):
+    if not os.path.isdir(path):
+        os.mkdir(path)
+
+
+if len(sys.argv) < 2:
+    raise ValueError("Usage:", sys.argv[0], " Missing some argument to indicate input files")
+
+with open(sys.argv[1]) as json_stream:
+    json_dict = json.load(json_stream)
+json_stream.close()
+
+# folder struct
+data_home = json_dict['data_home']
+create_path(data_home)
+original_data_home = os.path.join(data_home, json_dict['original_data_home'])
+create_path(original_data_home)
+predict_data_home = os.path.join(data_home, json_dict['predict_data_home'])
+create_path(predict_data_home)
+feature_data_home = os.path.join(data_home, json_dict['feature_data_home'])
+create_path(feature_data_home)
+model_data_home = os.path.join(data_home, json_dict['model_data_home'])
+create_path(model_data_home)
+preprocessed_folder = json_dict['preprocessed_folder']
+
+# excel file for subjective score
+excel_file = os.path.join(original_data_home, json_dict['excel_file_path'])
+
+# table name
+excel_sheet_name = json_dict['excel_sheet_name']
+file_column_name = json_dict['file_column_name']
+color_column_name = json_dict['color_column_name']
+quality_column_name = json_dict['quality_column_name']
+subjective_column_name = json_dict['subjective_column_name']
+hue_column_name = json_dict['hue_column_name']
 
 predict(*train())

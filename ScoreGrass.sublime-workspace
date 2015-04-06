@@ -3,15 +3,24 @@
 	{
 		"selected_items":
 		[
+			[
+				"da",
+				"data_home"
+			]
 		]
 	},
 	"buffers":
 	[
 	],
 	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
 	"command_palette":
 	{
 		"height": 150.0,
+		"last_filter": "",
 		"selected_items":
 		[
 			[
@@ -73,17 +82,14 @@
 	"expanded_folders":
 	[
 		"/C/Users/kern.ding/Documents/GitHub/ScoreGrass",
+		"/C/Users/kern.ding/Documents/GitHub/ScoreGrass/data",
 		"/C/Users/kern.ding/Documents/GitHub/ScoreGrass/src",
-		"/C/Users/kern.ding/Documents/GitHub/ScoreGrass/src/image_feature",
 		"/C/Users/kern.ding/Documents/GitHub/ScoreGrass/src/image_preprocess",
-		"/C/Users/kern.ding/Documents/GitHub/ScoreGrass/src/learning",
-		"/C/Users/kern.ding/Documents/GitHub/ScoreGrass/test",
-		"/C/Users/kern.ding/Documents/GitHub/ScoreGrass/test/image_feature",
-		"/C/Users/kern.ding/Documents/GitHub/ScoreGrass/test/image_preprocess",
-		"/C/Users/kern.ding/Documents/GitHub/ScoreGrass/test/InputOutput"
+		"/C/Users/kern.ding/Documents/GitHub/ScoreGrass/src/learning"
 	],
 	"file_history":
 	[
+		"/C/Users/kern.ding/Documents/GitHub/ScoreGrass/src/main.py",
 		"/C/Users/kern.ding/Documents/GitHub/ScoreGrass/ScoreGrass.sublime-project",
 		"/C/Users/kern.ding/Documents/GitHub/ScoreGrass/src/image_preprocess/EdgeDetector.py",
 		"/C/Users/kern.ding/Desktop/Workflow 1 (Debug).cs",
@@ -210,8 +216,7 @@
 		"/C/Users/kern.ding/Downloads/74732464-93c5-4176-adcc-85b87c89d3eb.ics",
 		"/C/Users/kern.ding/Downloads/7c8631e7-adc4-4748-b17e-4c328ad3a1df.ics",
 		"/C/Users/kern.ding/Downloads/invite.ics",
-		"/C/Users/kern.ding/Downloads/22feebd9-1c29-4f08-b8f6-c1944ffa1c7a.ics",
-		"/C/Users/kern.ding/Downloads/92577df7-ab44-426b-be95-1a6291919b9b.ics"
+		"/C/Users/kern.ding/Downloads/22feebd9-1c29-4f08-b8f6-c1944ffa1c7a.ics"
 	],
 	"find":
 	{
@@ -354,6 +359,7 @@
 	{
 		"height": 0.0
 	},
+	"pinned_build_system": "",
 	"project": "ScoreGrass.sublime-project",
 	"replace":
 	{
@@ -363,6 +369,7 @@
 	"select_file":
 	{
 		"height": 0.0,
+		"last_filter": "",
 		"selected_items":
 		[
 		],
@@ -371,6 +378,7 @@
 	"select_project":
 	{
 		"height": 500.0,
+		"last_filter": "",
 		"selected_items":
 		[
 		],
@@ -379,6 +387,7 @@
 	"select_symbol":
 	{
 		"height": 0.0,
+		"last_filter": "",
 		"selected_items":
 		[
 		],
