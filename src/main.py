@@ -42,7 +42,7 @@ def feature(images_data, feature_name):
     return feat_df
 
 
-def calc_feature(b_train):
+def calc_features(b_train):
     if b_train:
         # load file and image preprocessing
         excel_dataframe = (pd.read_excel(excel_file_path, excel_sheet_name, index_col=None, na_values=['NA'])).dropna(axis=0)
@@ -58,19 +58,18 @@ def calc_feature(b_train):
     return feat_df
 
 
-def load_feature(feat_path):
+def load_features(feat_path):
     return PublicSupport.load_dataframe(PublicSupport.find_newest_file(feat_path))
 
 
 def train():
     # feat_df = calc_feature(True)
-    feat_df = load_feature(feature_data_home)
+    feat_df = load_features(feature_data_home)
 
     x_data = feat_df.drop(subjective_column_name, axis=1, level=0)
     y_data = feat_df[subjective_column_name]
 
-    # simple linear models to train on c
-    # olor score
+    # simple linear models to train on color score
     color_models = ColorRegression.ColorRegression(model_data_home)
     color_models.train(x_data[hue_column_name], y_data[color_column_name])
 
@@ -86,12 +85,12 @@ def train():
     mixed_models = MixedRegression.MixedRegression(feature_dimensions(mixed_x), feature_dimensions(mixed_y), model_data_home)
     mixed_models.train(mixed_x, mixed_y)
 
-    return color_models, quality_models, mixed_models
+    return None, None, mixed_models
 
 
 def predict(color_models, quality_models, mixed_models):
     # feat_df = calc_feature(False)
-    feat_df = load_feature(feature_data_home)
+    feat_df = load_features(feature_data_home)
 
     x_data = feat_df.drop(subjective_column_name, axis=1, level=0)
 

@@ -14,6 +14,8 @@ class TheanetsANNs:
 
         if len(y_data.shape) == 1:
             y_matrix = np.matrix(y_data).T
+        else:
+            y_matrix = y_data.as_matrix()
 
         return self.exp.train((x_data, y_matrix))
 
