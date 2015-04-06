@@ -7,8 +7,6 @@ from pybrain.structure.networks.feedforward import FeedForwardNetwork
 from pybrain.supervised.trainers.backprop import BackpropTrainer
 from sklearn.externals import joblib
 
-from src.learning.strategy.RegressionManager import feature_dimensions
-
 
 __author__ = 'Kern'
 
@@ -38,9 +36,12 @@ class PyBrainANNs:
         if len(y_data.shape) == 1:
             y_matrix = np.matrix(y_data).T
         else:
-            y_matrix = y_data.as_matrix()
+            y_matrix = y_data.values
 
-        train_data_set = SupervisedDataSet(feature_dimensions(x_data), feature_dimensions(y_matrix))
+        assert (x_data.shape[1] == self.net.indim)
+        assert (y_matrix.shape[1] == self.net.outdim)
+
+        train_data_set = SupervisedDataSet(self.net.indim, self.net.outdim)
         train_data_set.setField("input", x_data)
         train_data_set.setField("target", y_matrix)
 
@@ -48,10 +49,7 @@ class PyBrainANNs:
         trainer.train()
 
     def predict(self, x_data):
-        return self.net.activate(x_data)
-
-    def predict_set(self, x_datas):
-        return self.net.activateOnDataset(x_datas)
+        return [self.net.activate(sample) for sample in x_data]
 
     def save(self, path):
         joblib.dump(self.net, path)

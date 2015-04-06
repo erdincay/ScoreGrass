@@ -1,4 +1,4 @@
-from enum import Enum
+import enum
 
 from src.file_io import PublicSupport
 from src.image_preprocess import EdgeDetector
@@ -12,9 +12,10 @@ crop_by_dot = 'plot'
 crop_by_frame = 'patch'
 
 
-class CropType(Enum):
-    dot = 1,
-    frame = 2,
+@enum.unique
+class CropType(enum.Enum):
+    dot = 1
+    frame = 2
     none = 3
 
 

@@ -1,6 +1,6 @@
+import enum
 import numpy as np
 import pandas as pd
-from enum import Enum
 from skimage import color, img_as_float
 
 __author__ = 'kern.ding'
@@ -10,10 +10,11 @@ feature_name_coverage = 'cover'
 feature_name_filtered = "filtered"
 
 
-class ColorChannel(Enum):
-    Red = 1,
-    Green = 2,
-    Blue = 3,
+@enum.unique
+class ColorChannel(enum.IntEnum):
+    Red = 1
+    Green = 2
+    Blue = 3
     Hue = 4
 
 
@@ -51,8 +52,8 @@ def compute_feats(image, minimum, maximum, color_channel):
         single_avr = average_color(img_hsv[:, :, 0])
         single_cover, single_filtered = color_coverage(img_hsv[:, :, 0], hue_range_to_float(minimum), hue_range_to_float(maximum))
     else:
-        single_avr = average_color(image[:, :, color_channel.value[0] - 1])
-        single_cover, single_filtered = color_coverage(image[:, :, color_channel.value[0] - 1],rgb_range_to_float(minimum), rgb_range_to_float(maximum))
+        single_avr = average_color(image[:, :, color_channel.value - 1])
+        single_cover, single_filtered = color_coverage(image[:, :, color_channel.value - 1], rgb_range_to_float(minimum), rgb_range_to_float(maximum))
 
     label_l2 = [feature_name_average, feature_name_coverage, feature_name_filtered]
     label_l1 = [color_channel.name] * len(label_l2)
