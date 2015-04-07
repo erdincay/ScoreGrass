@@ -1,16 +1,8 @@
 import os
-import math
 
+from src.file_io import PublicSupport
 from src.learning.evaluation import CrossValidation
 from src.learning.preprocess import Preprocessor
-from src.learning.regression.ScikitLasso import ScikitLasso
-from src.learning.regression.ScikitRidge import ScikitRidge
-from src.learning.regression.ScikitBayesianRidge import ScikitBayesianRidge
-from src.learning.regression.PyBrainANNs import PyBrainANNs
-from src.learning.regression.ScikitMultiTaskLasso import ScikitMultiTaskLasso
-from src.learning.regression.ScikitSvm import ScikitSvm
-from src.learning.regression.TheanetsANNs import TheanetsANNs
-
 
 __author__ = 'Kern'
 
@@ -21,62 +13,41 @@ def combine_name(parent, self):
     return parent + '_' + self + serialize_extension
 
 
-def _register_color_regression(str_parent):
-    return [
-        ScikitLasso(combine_name(str_parent, ScikitLasso.__name__)),
-        ScikitRidge(combine_name(str_parent, ScikitRidge.__name__))
-    ]
-
-
-def _register_quality_regression(x_dim, y_dim, str_parent):
-    return [
-        ScikitBayesianRidge(combine_name(str_parent, ScikitBayesianRidge.__name__)),
-        ScikitSvm('rbf', combine_name(str_parent, ScikitSvm.__name__)),
-        TheanetsANNs(x_dim, y_dim, math.floor(x_dim / 2), combine_name(str_parent, TheanetsANNs.__name__)),
-        PyBrainANNs(x_dim, y_dim, math.floor(x_dim / 2), combine_name(str_parent, PyBrainANNs.__name__))
-    ]
-
-
-def _register_mixed_regression(x_dim, y_dim, str_parent):
-    return [
-        ScikitMultiTaskLasso(combine_name(str_parent, ScikitMultiTaskLasso.__name__)),
-        TheanetsANNs(x_dim, y_dim, math.floor(x_dim / 2), combine_name(str_parent, TheanetsANNs.__name__)),
-        PyBrainANNs(x_dim, y_dim, math.floor(x_dim / 2), combine_name(str_parent, PyBrainANNs.__name__))
-    ]
+def deserialize_json(path, serialized_id):
+    json_dict = PublicSupport.read_json(os.path.join(path, serialized_id + ".json"))
+    return json_dict[RegressionManager.x_dim_name], json_dict[RegressionManager.y_dim_name]
 
 
 class RegressionManager:
-    def __init__(self, model_list):
+    x_dim_name = 'x_dim'
+    y_dim_name = 'y_dim'
+
+    def __init__(self, model_list, x_dim, y_dim):
         self.model_list = model_list
+        self.x_dim = x_dim
+        self.y_dim = y_dim
         self.scalar = None
 
     def train(self, x_data, y_data):
         assert (x_data.shape[0] == y_data.shape[0])
-
         x_train, x_test, y_train, y_test = CrossValidation.train_test_split(0.25)(x_data, y_data)
         self.scalar = Preprocessor.Standardization(x_train)
         x_train_scaled = self.scalar.transform(x_train)
         x_test_scaled = self.scalar.transform(x_test)
-
         for model in self.model_list:
             model.train(x_train_scaled, y_train)
-
-    def save(self, path):
-        for model in self.model_list:
-            model.save(os.path.join(path, model.serialize_id))
-
-    def load(self, path):
-        for model in self.model_list:
-            model.load(os.path.join(path, model.serialize_id))
 
     def predict(self, x_data):
         x_data_scaled = self.scalar.transform(x_data)
         return [m.predict(x_data_scaled) for m in self.model_list]
 
-    @classmethod
-    def color_regression(cls):
-        return cls(_register_color_regression())
+    def save(self, path):
+        PublicSupport.write_json({RegressionManager.x_dim_name : self.x_dim, RegressionManager.y_dim_name : self.y_dim}, os.path.join(path, self.__class__.__name__ + '.json'))
+        for model in self.model_list:
+            model.save(os.path.join(path, model.serialize_id))
+        return self
 
-    @classmethod
-    def quality_regression(cls, x_dim, y_dim):
-        return cls(_register_quality_regression(x_dim, y_dim))
+    def load(self, path):
+        for model in self.model_list:
+            model.load(os.path.join(path, model.serialize_id))
+        return self

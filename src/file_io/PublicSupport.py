@@ -1,4 +1,5 @@
 import fnmatch
+import json
 import os
 import pandas as pd
 
@@ -7,6 +8,10 @@ __author__ = 'Kern'
 
 def extract_filename_by_path(path):
     return os.path.split(path)[1]
+
+
+def extract_dir_by_path(path):
+    return os.path.split(path)[0]
 
 
 def save_dataframe(dataframe, filename):
@@ -26,3 +31,22 @@ def find_newest_file(filepath, pattern):
         return max(file_list, key=os.path.getctime)
 
     return None
+
+
+def read_json(path):
+    with open(path) as json_stream:
+        json_dict = json.load(json_stream)
+    json_stream.close()
+
+    return json_dict
+
+
+def write_json(content, path):
+    with open(path, 'w') as output_json:
+        json.dump(content)
+    output_json.close()
+
+
+def create_path(path):
+    if not os.path.isdir(path):
+        os.mkdir(path)
