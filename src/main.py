@@ -66,7 +66,7 @@ def train(original_data_path, preprocessed_dir, excel, sheet_name, feature_data_
     # simple linear models to train on color score
     color_x = x_data[hue_column_name]
     color_y = y_data[color_column_name]
-    color_models = ColorRegression()
+    color_models = ColorRegression(feature_dimensions(color_x), feature_dimensions(color_y))
     color_models.train(color_x, color_y)
     color_models.save(model_data_path)
 

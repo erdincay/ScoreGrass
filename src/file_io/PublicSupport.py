@@ -43,7 +43,7 @@ def read_json(path):
 
 def write_json(content, path):
     with open(path, 'w') as output_json:
-        json.dump(content)
+        json.dump(content, path)
     output_json.close()
 
 
