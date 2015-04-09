@@ -1,7 +1,7 @@
 {
   "data_home": "..//data",
-  "original_data_home": "original",
-  "predict_data_home": "new",
+  "original_data_home": "training",
+  "predict_data_home": "prediction",
   "preprocessed_folder": "preprocess",
   "feature_data_home": "feat",
   "model_data_home": "model",
