@@ -21,7 +21,7 @@ def _register_regression(x_dim, y_dim):
 
 class QualityRegression(RegressionManager):
     def __init__(self, x_dim, y_dim):
-        super().__init__(_register_regression(x_dim, y_dim))
+        super().__init__(_register_regression(x_dim, y_dim), x_dim, y_dim)
 
     @classmethod
     def deserialize_regression(cls, path):

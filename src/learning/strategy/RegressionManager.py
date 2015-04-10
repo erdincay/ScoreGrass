@@ -42,10 +42,11 @@ class RegressionManager:
         return [m.predict(x_data_scaled) for m in self.model_list]
 
     def save(self, path):
-        PublicSupport.write_json({RegressionManager.x_dim_name: self.x_dim, RegressionManager.y_dim_name: self.y_dim}, os.path.join(path, self.__class__.__name__ + '.json'))
+        file_id = os.path.join(path, self.__class__.__name__ + '.json')
+        PublicSupport.write_json({RegressionManager.x_dim_name: self.x_dim, RegressionManager.y_dim_name: self.y_dim}, file_id)
         for model in self.model_list:
             model.save(os.path.join(path, model.serialize_id))
-        return self
+        return file_id
 
     def load(self, path):
         for model in self.model_list:
