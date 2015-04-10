@@ -5,7 +5,6 @@ from datetime import datetime
 import pandas as pd
 
 from src.file_io import SampleManager
-
 from src.file_io import PredictorManager
 from src.file_io import PublicSupport
 from src.image_feature import FeatureManager
@@ -30,7 +29,8 @@ def __feature(images_data, feature_name, feature_data_path):
     # feature extraction
     feats_list = [FeatureManager.compute_feats(img).append(info) for img, info in images_data]
     feat_df = pd.DataFrame(feats_list)
-    PublicSupport.save_dataframe(feat_df, os.path.join(feature_data_path, feature_name + datetime.now().strftime("%Y-%m-%d %H.%M.%S")))
+    PublicSupport.save_dataframe(feat_df, os.path.join(feature_data_path,
+                                                       feature_name + datetime.now().strftime("%Y-%m-%d %H.%M.%S")))
 
     return feat_df
 
@@ -39,8 +39,10 @@ def _calc_train_features(original_data_path, preprocessed_dir, excel, sheet_name
     excel_dataframe = (pd.read_excel(excel, sheet_name, index_col=None, na_values=['NA'])).dropna(axis=0)
     preprocessed_dir = os.path.join(original_data_path, preprocessed_dir)
     PublicSupport.create_path(preprocessed_dir)
-    image_dict = SampleManager.prepare_preprocessing_image(excel_dataframe, preprocessed_dir, original_data_path, file_column_name)
-    training_data = SampleManager.prepare_training_data(excel_dataframe, image_dict, file_column_name, color_column_name, quality_column_name, subjective_column_name)
+    image_dict = SampleManager.prepare_preprocessing_image(excel_dataframe, preprocessed_dir, original_data_path,
+                                                           file_column_name)
+    training_data = SampleManager.prepare_training_data(excel_dataframe, image_dict, file_column_name,
+                                                        color_column_name, quality_column_name, subjective_column_name)
     return __feature(training_data, 'feature_train', feature_data_path)
 
 
@@ -88,7 +90,8 @@ def train(original_data_path, preprocessed_dir, excel, sheet_name, feature_data_
 
 
 def load_models(model_data_path):
-    return ColorRegression.deserialize_regression(model_data_path), QualityRegression.deserialize_regression(model_data_path), MixedRegression.deserialize_regression(model_data_path)
+    return ColorRegression.deserialize_regression(model_data_path), QualityRegression.deserialize_regression(
+        model_data_path), MixedRegression.deserialize_regression(model_data_path)
 
 
 def predict(predict_data_path, preprocessed_dir, feature_data_path, color_models, quality_models, mixed_models):
@@ -133,5 +136,6 @@ hue_column_name = json_dict['hue_column_name']
 
 
 # color_m, quality_m, mixed_m = load_models(model_data_home)
-color_m, quality_m, mixed_m = train(original_data_home, preprocessed_folder, excel_file, excel_sheet_name, feature_data_home, model_data_home)
+color_m, quality_m, mixed_m = train(original_data_home, preprocessed_folder, excel_file, excel_sheet_name,
+                                    feature_data_home, model_data_home)
 predict(predict_data_home, preprocessed_folder, feature_data_home, color_m, quality_m, mixed_m)

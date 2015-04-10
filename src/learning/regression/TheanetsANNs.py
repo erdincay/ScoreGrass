@@ -1,4 +1,3 @@
-from sklearn.metrics import accuracy_score
 import theanets
 import numpy as np
 
@@ -26,7 +25,7 @@ class TheanetsANNs:
 
     def score(self, x_data, y_data):
         # if len(y_data.shape) == 1:
-        #     y_matrix = np.matrix(y_data).T
+        # y_matrix = np.matrix(y_data).T
         # else:
         #     y_matrix = y_data.values
         #

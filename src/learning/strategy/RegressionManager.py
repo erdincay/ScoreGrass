@@ -44,7 +44,8 @@ class RegressionManager:
 
     def save(self, path):
         file_id = os.path.join(path, self.__class__.__name__ + '.json')
-        PublicSupport.write_json({RegressionManager.x_dim_name: self.x_dim, RegressionManager.y_dim_name: self.y_dim}, file_id)
+        PublicSupport.write_json({RegressionManager.x_dim_name: self.x_dim, RegressionManager.y_dim_name: self.y_dim},
+                                 file_id)
         for model in self.model_list:
             model.save(os.path.join(path, model.serialize_id))
         return file_id

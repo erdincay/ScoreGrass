@@ -40,6 +40,6 @@ def data_set_split(factor):
     """
 
     def function(data_set):
-        return data_set.splitWithProportion(1-factor)
+        return data_set.splitWithProportion(1 - factor)
 
     return function

@@ -1,5 +1,7 @@
 from sklearn.linear_model import Ridge
+
 from src.learning.regression.ScikitLearning import ScikitModel
+
 
 __author__ = 'Kern'
 

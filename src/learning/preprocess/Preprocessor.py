@@ -13,13 +13,13 @@ class Normalization:
 
 class Standardization:
     def __init__(self, x_train):
-        self.scaler = preprocessing.StandardScaler(copy=True, with_mean=True, with_std=True).fit(x_train)
+        self.scalar = preprocessing.StandardScaler(copy=True, with_mean=True, with_std=True).fit(x_train)
 
     def mean(self):
-        return self.scaler.mean_
+        return self.scalar.mean_
 
     def variance(self):
-        return self.scaler.std_
+        return self.scalar.std_
 
     def transform(self, data):
-        return self.scaler.transform(data)
+        return self.scalar.transform(data)

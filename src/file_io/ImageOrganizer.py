@@ -1,4 +1,5 @@
 import os
+
 from skimage import io
 
 from src.file_io import PublicSupport
@@ -19,7 +20,8 @@ def load_images(image_collection):
 
 def prepare_images(filename_list, original_path, preprocessed_path):
     # filter the images that is already preprocessed
-    need_preprocessing_list = [os.path.join(original_path, filename) for filename in filename_list if not os.path.isfile(os.path.join(preprocessed_path, filename))]
+    need_preprocessing_list = [os.path.join(original_path, filename) for filename in filename_list if
+                               not os.path.isfile(os.path.join(preprocessed_path, filename))]
     image_dict = PreprocessingManager.pre_process(io.imread_collection(need_preprocessing_list, conserve_memory=True))
 
     # save the preprocessed images
@@ -27,7 +29,8 @@ def prepare_images(filename_list, original_path, preprocessed_path):
         io.imsave(os.path.join(preprocessed_path, name), img)
 
     # load the preprocessed images
-    has_preprocessed_list = [os.path.join(original_path, filename) for filename in filename_list if os.path.isfile(os.path.join(preprocessed_path, filename))]
+    has_preprocessed_list = [os.path.join(original_path, filename) for filename in filename_list if
+                             os.path.isfile(os.path.join(preprocessed_path, filename))]
     image_dict.update(load_images(io.imread_collection(has_preprocessed_list, conserve_memory=True)))
 
     return image_dict

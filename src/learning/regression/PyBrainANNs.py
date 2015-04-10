@@ -5,7 +5,6 @@ from pybrain.structure.modules.linearlayer import LinearLayer
 from pybrain.structure.modules.sigmoidlayer import SigmoidLayer
 from pybrain.structure.networks.feedforward import FeedForwardNetwork
 from pybrain.supervised.trainers.backprop import BackpropTrainer
-from pybrain.tools.validation import ModuleValidator
 from sklearn.externals import joblib
 
 

@@ -1,9 +1,7 @@
 import pandas as pd
-import numpy as np
 from skimage.color import rgb2grey
 
 from src.image_feature import GaborFilter
-from src.image_feature import GLCM
 from src.image_feature import ColorAnalyzer
 
 
