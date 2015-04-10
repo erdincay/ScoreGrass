@@ -12,6 +12,9 @@ class ScikitModel:
         assert (x_data.shape[0] == y_data.shape[0])
         self.model.fit(x_data, y_data)
 
+    def score(self, x_data, y_data):
+        return self.model.score(x_data, y_data)
+
     def predict(self, x_data):
         return self.model.predict(x_data)
 

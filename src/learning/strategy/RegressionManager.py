@@ -36,6 +36,7 @@ class RegressionManager:
         x_test_scaled = self.scalar.transform(x_test)
         for model in self.model_list:
             model.train(x_train_scaled, y_train)
+            print(model.serialize_id, ' validate on test dataset: ', model.score(x_test_scaled, y_test))
 
     def predict(self, x_data):
         x_data_scaled = self.scalar.transform(x_data)

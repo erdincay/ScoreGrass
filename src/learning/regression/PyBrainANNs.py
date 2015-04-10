@@ -5,6 +5,7 @@ from pybrain.structure.modules.linearlayer import LinearLayer
 from pybrain.structure.modules.sigmoidlayer import SigmoidLayer
 from pybrain.structure.networks.feedforward import FeedForwardNetwork
 from pybrain.supervised.trainers.backprop import BackpropTrainer
+from pybrain.tools.validation import ModuleValidator
 from sklearn.externals import joblib
 
 
@@ -30,7 +31,7 @@ class PyBrainANNs:
 
         self.net.sortModules()
 
-    def train(self, x_data, y_data):
+    def _prepare_dataset(self, x_data, y_data):
         assert (x_data.shape[0] == y_data.shape[0])
 
         if len(y_data.shape) == 1:
@@ -41,12 +42,19 @@ class PyBrainANNs:
         assert (x_data.shape[1] == self.net.indim)
         assert (y_matrix.shape[1] == self.net.outdim)
 
-        train_data_set = SupervisedDataSet(self.net.indim, self.net.outdim)
-        train_data_set.setField("input", x_data)
-        train_data_set.setField("target", y_matrix)
+        data_set = SupervisedDataSet(self.net.indim, self.net.outdim)
+        data_set.setField("input", x_data)
+        data_set.setField("target", y_matrix)
 
-        trainer = BackpropTrainer(self.net, train_data_set)
+        return data_set
+
+    def train(self, x_data, y_data):
+        trainer = BackpropTrainer(self.net, self._prepare_dataset(x_data, y_data))
         trainer.train()
+
+    def score(self, x_data, y_datas):
+        # return ModuleValidator.classificationPerformance(self.net, self._prepare_dataset(x_data, y_datas))
+        return 'not implement yet'
 
     def predict(self, x_data):
         return [self.net.activate(sample) for sample in x_data]
