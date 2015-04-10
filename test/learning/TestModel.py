@@ -1,8 +1,10 @@
 import unittest
 import os
+
 from src.learning.strategy.MixedRegression import MixedRegression
 from src.learning.strategy.QualityRegression import QualityRegression
 from src.learning.strategy.ColorRegression import ColorRegression
+
 
 __author__ = 'Kern'
 

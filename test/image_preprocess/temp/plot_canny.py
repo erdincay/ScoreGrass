@@ -18,15 +18,12 @@ the hysteresis thresholding.
 import sys
 
 import matplotlib.pyplot as plt
-from scipy.ndimage import uniform_filter
-from skimage import io, img_as_float
+from skimage import io
 from skimage.color import rgb2grey
 from skimage.feature import canny
 from skimage import measure
 from skimage.filters import threshold_otsu
 from skimage.morphology import closing, square
-
-from src.image_preprocess.PeakDetector import generate_green_map
 
 
 if len(sys.argv) < 2:

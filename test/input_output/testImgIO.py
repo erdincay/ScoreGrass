@@ -1,8 +1,10 @@
+import sys
+
 from skimage import io, img_as_float
 from skimage.color import rgb2grey
 from skimage.viewer import ImageViewer
 from skimage.filters import sobel
-import sys
+
 
 __author__ = 'Kern'
 

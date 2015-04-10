@@ -16,14 +16,14 @@ grass_locations = [(474, 291), (440, 433), (466, 18), (462, 236)]
 grass_patches = []
 for loc in grass_locations:
     grass_patches.append(image[loc[0]:loc[0] + PATCH_SIZE,
-                               loc[1]:loc[1] + PATCH_SIZE])
+                         loc[1]:loc[1] + PATCH_SIZE])
 
 # select some patches from sky areas of the image
 sky_locations = [(54, 48), (21, 233), (90, 380), (195, 330)]
 sky_patches = []
 for loc in sky_locations:
     sky_patches.append(image[loc[0]:loc[0] + PATCH_SIZE,
-                             loc[1]:loc[1] + PATCH_SIZE])
+                       loc[1]:loc[1] + PATCH_SIZE])
 
 # compute some GLCM properties each patch
 xs = []
@@ -62,13 +62,13 @@ ax.legend()
 
 # display the image patches
 for i, patch in enumerate(grass_patches):
-    ax = fig.add_subplot(3, len(grass_patches), len(grass_patches)*1 + i + 1)
+    ax = fig.add_subplot(3, len(grass_patches), len(grass_patches) * 1 + i + 1)
     ax.imshow(patch, cmap=plt.cm.gray, interpolation='nearest',
               vmin=0, vmax=255)
     ax.set_xlabel('Grass %d' % (i + 1))
 
 for i, patch in enumerate(sky_patches):
-    ax = fig.add_subplot(3, len(sky_patches), len(sky_patches)*2 + i + 1)
+    ax = fig.add_subplot(3, len(sky_patches), len(sky_patches) * 2 + i + 1)
     ax.imshow(patch, cmap=plt.cm.gray, interpolation='nearest',
               vmin=0, vmax=255)
     ax.set_xlabel('Sky %d' % (i + 1))

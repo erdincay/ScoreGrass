@@ -22,7 +22,6 @@ from scipy.ndimage import uniform_filter
 from skimage import measure
 from skimage import io
 from skimage import color
-from skimage.viewer import ImageViewer
 
 
 if len(sys.argv) < 2:

@@ -1,11 +1,13 @@
+import sys
+
 from scipy.ndimage import io, uniform_filter
 from skimage import transform
 from skimage import color
-import sys
+
 from src.image_preprocess.PeakDetector import generate_green_map
 
-__author__ = 'Kern'
 
+__author__ = 'Kern'
 
 if len(sys.argv) < 2:
     raise ValueError("Usage:", sys.argv[0], " Missing some argument to indicate input files")

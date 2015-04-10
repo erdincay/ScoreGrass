@@ -1,9 +1,11 @@
-from scipy.ndimage import io, uniform_filter
-from skimage import color
+import sys
+
+from scipy.ndimage import io
 from skimage.segmentation import find_boundaries, mark_boundaries
 import matplotlib.pyplot as plt
-import sys
+
 from src.image_preprocess.PeakDetector import generate_green_map
+
 
 __author__ = 'Kern'
 

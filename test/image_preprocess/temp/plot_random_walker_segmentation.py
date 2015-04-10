@@ -29,8 +29,6 @@ from skimage import color
 from skimage.segmentation import random_walker
 
 
-
-
 image = io.imread(
     "D:\\Dropbox\\Turfgrass software project\\Pictures taken\\Patch 7.JPG")
 image = img_as_float(transform.resize(image, (800, 800)))

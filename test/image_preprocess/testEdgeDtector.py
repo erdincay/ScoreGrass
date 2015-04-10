@@ -1,8 +1,10 @@
-from skimage import io
 import sys
+
+from skimage import io
 import matplotlib.pyplot as plt
 
 from src.image_preprocess.EdgeDetector import *
+
 
 __author__ = 'kern.ding'
 

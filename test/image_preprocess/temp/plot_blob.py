@@ -37,12 +37,12 @@ detected accurately. See :py:meth:`skimage.feature.blob_doh` for usage.
 
 """
 
-from matplotlib import pyplot as plt
-from scipy.ndimage import io, uniform_filter
-from skimage.feature import blob_doh
 import sys
+
+from matplotlib import pyplot as plt
+from scipy.ndimage import io
+from skimage.feature import blob_doh
 from skimage.viewer import ImageViewer
-from src.image_preprocess.PeakDetector import generate_green_map
 
 
 if len(sys.argv) < 2:
