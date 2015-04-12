@@ -1,6 +1,17 @@
+import numpy as np
 from sklearn.externals import joblib
+from sklearn.metrics import explained_variance_score
 
 __author__ = 'Kern'
+
+
+def regression_score(true_data, predict_data):
+    assert (true_data.shape == predict_data.shape)
+    if len(true_data.shape) == 1 or true_data.shape[1] == 1:
+        return explained_variance_score(true_data, predict_data)
+    else:
+        return np.mean([explained_variance_score(true_data[:, index], predict_data[:, index]) for index in
+                        range(true_data.shape[1])])
 
 
 class ScikitModel:

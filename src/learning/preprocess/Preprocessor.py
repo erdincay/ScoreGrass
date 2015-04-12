@@ -1,4 +1,5 @@
 from sklearn import preprocessing
+from sklearn.externals import joblib
 
 __author__ = 'Kern'
 
@@ -12,14 +13,20 @@ class Normalization:
 
 
 class Standardization:
-    def __init__(self, x_train):
-        self.scalar = preprocessing.StandardScaler(copy=True, with_mean=True, with_std=True).fit(x_train)
+    def __init__(self, x_train=None):
+        if x_train is not None:
+            self.scalar = preprocessing.StandardScaler().fit(x_train)
+        else:
+            self.scalar = preprocessing.StandardScaler()
 
-    def mean(self):
-        return self.scalar.mean_
-
-    def variance(self):
-        return self.scalar.std_
+    def scale(self, data):
+        self.scalar.fit(data)
 
     def transform(self, data):
         return self.scalar.transform(data)
+
+    def save(self, path):
+        joblib.dump(self.scalar, path)
+
+    def load(self, path):
+        self.scalar = joblib.load(path)

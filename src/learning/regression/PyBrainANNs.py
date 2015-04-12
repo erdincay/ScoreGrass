@@ -5,7 +5,9 @@ from pybrain.structure.modules.linearlayer import LinearLayer
 from pybrain.structure.modules.sigmoidlayer import SigmoidLayer
 from pybrain.structure.networks.feedforward import FeedForwardNetwork
 from pybrain.supervised.trainers.backprop import BackpropTrainer
+from pybrain.tools.validation import ModuleValidator
 from sklearn.externals import joblib
+from src.learning.regression.ScikitLearning import regression_score
 
 
 __author__ = 'Kern'
@@ -52,11 +54,10 @@ class PyBrainANNs:
         trainer.train()
 
     def score(self, x_data, y_datas):
-        # return ModuleValidator.classificationPerformance(self.net, self._prepare_dataset(x_data, y_datas))
-        return 'not implement yet'
+        return ModuleValidator.validate(regression_score, self.net, self._prepare_dataset(x_data, y_datas))
 
     def predict(self, x_data):
-        return [self.net.activate(sample) for sample in x_data]
+        return np.array([self.net.activate(sample) for sample in x_data])
 
     def save(self, path):
         joblib.dump(self.net, path)

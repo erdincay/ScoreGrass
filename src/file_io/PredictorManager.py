@@ -14,7 +14,7 @@ def prepare_preprocessing_image(preprocessed_path, original_path, pattern):
     return ImageOrganizer.prepare_images(filename_list, original_path, preprocessed_path)
 
 
-def prepare_training_data(image_dict, file_column_name, l2_label_name):
+def prepare_image_data(image_dict, file_column_name, l2_label_name):
     name_list = [file_column_name]
     multi_index_list = [[l2_label_name] * len(name_list), name_list]
 

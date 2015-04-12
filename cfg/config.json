@@ -5,11 +5,15 @@
   "preprocessed_folder": "preprocess",
   "feature_data_home": "feat",
   "model_data_home": "model",
+  "output_result_home": "output",
   "excel_file_path": "Data for summer pictures.xlsx",
   "excel_sheet_name": "Sheet1",
   "file_column_name": "File Name",
   "color_column_name": "Subjective Color Rating",
   "quality_column_name": "Subjective Quality Rating",
   "subjective_column_name": "Subjective",
-  "hue_column_name": "Hue"
+  "hue_column_name": "Hue",
+  "b_load_model": false,
+  "b_load_train_feat": false,
+  "b_load_predict_feat": false
 }
