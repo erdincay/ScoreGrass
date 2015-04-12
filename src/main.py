@@ -76,21 +76,21 @@ def train(original_data_path, preprocessed_dir, excel, sheet_name, feature_data_
     color_x = x_data[hue_column_name]
     color_y = y_data[color_column_name]
     color_models = ColorRegression(feature_dimensions(color_x), feature_dimensions(color_y))
-    model_score_dict = color_models.validation(color_x, color_y, 0.25)
+    model_score_dict = {color_models.__class__.__name__:  color_models.validation(color_x, color_y, 0.25)}
     color_models.save(model_data_path)
 
     # kinds of models to train on quality score
     quality_x = x_data
     quality_y = y_data[quality_column_name]
     quality_models = QualityRegression(feature_dimensions(quality_x), feature_dimensions(quality_y))
-    model_score_dict.update(quality_models.validation(quality_x, quality_y, 0.25))
+    model_score_dict.update({quality_models.__class__.__name__: quality_models.validation(quality_x, quality_y, 0.25)})
     quality_models.save(model_data_path)
 
     # modes to train on both color and quality
     mixed_x = x_data
     mixed_y = y_data[[color_column_name, quality_column_name]]
     mixed_models = MixedRegression(feature_dimensions(mixed_x), feature_dimensions(mixed_y))
-    model_score_dict.update(mixed_models.validation(mixed_x, mixed_y, 0.25))
+    model_score_dict.update({mixed_models.__class__.__name__: mixed_models.validation(mixed_x, mixed_y, 0.25)})
     mixed_models.save(model_data_path)
 
     # store cross_validation scores
@@ -119,7 +119,7 @@ def predict(predict_data_path, preprocessed_dir, feature_data_path, color_models
 
     # store prediction result
     PublicSupport.save_dataframe(all_df, os.path.join(output_result_path,
-                                                      'prediction' + 'model_score' + datetime.now().strftime(
+                                                      'prediction' + datetime.now().strftime(
                                                           "%Y-%m-%d %H.%M.%S")))
 
 

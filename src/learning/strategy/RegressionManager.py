@@ -1,5 +1,5 @@
 import os
-import numpy as np
+
 from src.file_io import PublicSupport
 from src.learning.evaluation import CrossValidation
 from src.learning.preprocess import Preprocessor
@@ -51,7 +51,6 @@ class RegressionManager:
             else:
                 raise ValueError('wrong dimensions of prediction')
         return ret_dict
-
 
     def score(self, x_data, y_data):
         assert (x_data.shape[0] == y_data.shape[0])

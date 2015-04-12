@@ -14,6 +14,6 @@
   "subjective_column_name": "Subjective",
   "hue_column_name": "Hue",
   "b_load_model": false,
-  "b_load_train_feat": false,
-  "b_load_predict_feat": false
+  "b_load_train_feat": true,
+  "b_load_predict_feat": true
 }

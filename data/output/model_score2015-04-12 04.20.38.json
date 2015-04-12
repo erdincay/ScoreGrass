@@ -1,0 +1,13 @@
+{
+  "ColorRegression_ScikitLasso.model": 0.699828825904177,
+  "ColorRegression_ScikitRidge.model": 0.741434022954983,
+
+  "QualityRegression_ScikitSvm.model": 0.6742483753594855,
+  "QualityRegression_ScikitBayesianRidge.model": 0.7338541204764484,
+  "QualityRegression_PyBrainANNs.model": 0.28072823464320906,
+  "QualityRegression_TheanetsANNs.model": 0.27174553892748177,
+
+  "MixedRegression_PyBrainANNs.model": 0.5988818624602337,
+  "MixedRegression_TheanetsANNs.model": 0.4565732595477342,
+  "MixedRegression_ScikitMultiTaskLasso.model": 0.7020846049195184
+}
