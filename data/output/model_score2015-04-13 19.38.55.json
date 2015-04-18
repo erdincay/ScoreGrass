@@ -1,1 +1,17 @@
-{"MixedRegression": {"MixedRegression_TheanetsANNs.model": 0.45255763711286356, "MixedRegression_PyBrainANNs.model": 0.02895239555813578, "MixedRegression_ScikitMultiTaskLasso.model": 0.7020846049195184}, "QualityRegression": {"QualityRegression_TheanetsANNs.model": 0.15153361116512432, "QualityRegression_ScikitBayesianRidge.model": 0.7338541204764449, "QualityRegression_PyBrainANNs.model": -0.7977956784488751, "QualityRegression_ScikitSvm.model": 0.6742483753594855}, "ColorRegression": {"ColorRegression_ScikitRidge.model": 0.7414340229549823, "ColorRegression_ScikitLasso.model": 0.6998288259041767}}
+{
+  "MixedRegression": {
+    "MixedRegression_TheanetsANNs.model": 0.45255763711286356,
+    "MixedRegression_PyBrainANNs.model": 0.02895239555813578,
+    "MixedRegression_ScikitMultiTaskLasso.model": 0.7020846049195184
+  },
+  "QualityRegression": {
+    "QualityRegression_TheanetsANNs.model": 0.15153361116512432,
+    "QualityRegression_ScikitBayesianRidge.model": 0.7338541204764449,
+    "QualityRegression_PyBrainANNs.model": -0.7977956784488751,
+    "QualityRegression_ScikitSvm.model": 0.6742483753594855
+  },
+  "ColorRegression": {
+    "ColorRegression_ScikitRidge.model": 0.7414340229549823,
+    "ColorRegression_ScikitLasso.model": 0.6998288259041767
+  }
+}
