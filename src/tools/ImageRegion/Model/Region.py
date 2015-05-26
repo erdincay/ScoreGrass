@@ -1,4 +1,3 @@
-import logging
 from src.tools.DictionaryExtension import merge_two_dicts
 
 __author__ = 'Kern'
@@ -22,9 +21,7 @@ def merge_regions(regions):
     linked_regions_new = set()
     eigen_new = 0
 
-    logging.debug("merge_regions: num=" + str(len(regions)))
     for region in regions:
-        logging.debug(region)
         coord_map_new.update(region.coord_map)
         linked_regions_new |= region.linked_regions
 
@@ -32,10 +29,7 @@ def merge_regions(regions):
         eigen_new += region.eigen * len(region.coord_map) / len(coord_map_new)
         linked_regions_new.discard(region)
 
-    ret = Region(coord_map_new, linked_regions_new, eigen_new)
-    logging.debug("new region: " + str(ret))
-
-    return ret
+    return Region(coord_map_new, linked_regions_new, eigen_new)
 
 
 class Region:
@@ -52,7 +46,7 @@ class Region:
 
     def __str__(self):
         return "{id: " + format(id(self), '#018X') + ", coord_map: " + str(len(self.coord_map)) + ", linked: " + str(len(self.linked_regions)) + \
-               ", eigen: " + str(self.eigen) + ", eigen_function: " + str(self.eigen_value(1)) + "}"
+               ", eigen: " + str(self.eigen) + "}"
 
     def merge(self, oth_region):
         return merge_two_regions(self, oth_region)
