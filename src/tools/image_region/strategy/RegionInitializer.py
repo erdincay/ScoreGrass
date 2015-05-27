@@ -1,5 +1,6 @@
 import math
-from src.tools.image_region.Model.Region import Region
+from src.tools.image_region.model.Line import generate_square_linked_coordinates
+from src.tools.image_region.model.Region import Region
 
 __author__ = 'Kern'
 
@@ -11,11 +12,6 @@ def _init_linked_region(regions_map, boundary):
             if linked_region is not None:
                 region.add_neighbor(linked_region)
 
-
-def generate_square_linked_coordinates(coord):
-    row_list = [coord[0] - 1, coord[0], coord[0] + 1]
-    col_list = [coord[1] - 1, coord[1], coord[1] + 1]
-    return {(row, col) for row in row_list for col in col_list if row != coord[0] or col != coord[1]}
 
 def init_regions(image, initialized_regions_num):
     if len(image.shape) < 2:

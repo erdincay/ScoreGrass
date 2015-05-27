@@ -1,5 +1,5 @@
-from src.tools.image_region.Model.Line import Line
-from src.tools.image_region.Strategy.RegionInitializer import generate_square_linked_coordinates
+from src.tools.image_region.model.Line import Line
+from src.tools.image_region.model.Line import generate_square_linked_coordinates
 
 __author__ = 'Kern'
 

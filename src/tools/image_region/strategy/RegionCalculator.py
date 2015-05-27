@@ -1,5 +1,5 @@
 import operator
-from src.tools.image_region.Model.Region import merge_regions
+from src.tools.image_region.model.Region import merge_regions
 
 __author__ = 'Kern'
 

@@ -4,9 +4,9 @@ import logging
 
 from skimage import io
 
-from src.tools.image_region.Strategy.EdgeMarker import make_region_edge
-from src.tools.image_region.Strategy.RegionCalculator import iterate_regions
-from src.tools.image_region.Strategy.RegionInitializer import init_regions
+from src.tools.image_region.strategy.EdgeMarker import make_region_edge
+from src.tools.image_region.strategy.RegionCalculator import iterate_regions
+from src.tools.image_region.strategy.RegionInitializer import init_regions
 
 __author__ = 'Kern'
 
