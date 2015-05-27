@@ -1,5 +1,5 @@
 import math
-from src.tools.ImageRegion.Model.Region import Region
+from src.tools.image_region.Model.Region import Region
 
 __author__ = 'Kern'
 

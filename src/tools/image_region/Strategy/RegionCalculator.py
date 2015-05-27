@@ -1,5 +1,5 @@
 import operator
-from src.tools.ImageRegion.Model.Region import merge_regions
+from src.tools.image_region.Model.Region import merge_regions
 
 __author__ = 'Kern'
 
@@ -94,5 +94,11 @@ def merge_regions_map(sorted_prepared_regions, original_regions_set):
 
 
 def iterate_regions(regions_set, max_eigen_diff):
+    """
+    Merge regions one time
+    :param regions_set: all the regions to be merge
+    :param max_eigen_diff: eigen value threshold to prevent two regions with large gap eigen values to be merged.
+    :return: merged regions
+    """
     sorted_pre_regions = _generate_regions_merge_map(regions_set, max_eigen_diff)
     return merge_regions_map(sorted_pre_regions, regions_set.copy())
