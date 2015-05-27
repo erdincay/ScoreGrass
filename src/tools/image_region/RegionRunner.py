@@ -31,21 +31,20 @@ elif len(readret.shape) == 1:
 else:
     raise ValueError("cannot read the image: " + path)
 
-regions_set = init_regions(image, 2500)
+regions_set = init_regions(image, 200)
 
 new_set_len = 0
 old_set_len = len(regions_set)
 
 while new_set_len < old_set_len:
     old_set_len = len(regions_set)
-    regions_set = iterate_regions(regions_set, 7)
+    regions_set = iterate_regions(regions_set, 10, 3)
     new_set_len = len(regions_set)
 
 logging_regions(regions_set)
 
 for index, region in enumerate(regions_set):
     edge = make_region_edge(region)
-    logging.info(str(index) + ": " + str(edge))
     image = edge.draw(image, [255, 255, 255])
 
 io.imshow(image)

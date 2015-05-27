@@ -13,17 +13,25 @@ def _init_linked_region(regions_map, boundary):
                 region.add_neighbor(linked_region)
 
 
-def init_regions(image, initialized_regions_num):
+def init_regions(image, split_number):
     if len(image.shape) < 2:
         raise ValueError("input is not an image")
 
-    split_num = math.floor(math.sqrt(initialized_regions_num))
-    row_interval = math.ceil(image.shape[0] / split_num)
-    col_interval = math.ceil(image.shape[1] / split_num)
+    if isinstance(split_number, int):
+        split_row = split_number
+        split_col = split_number
+    elif len(split_number) >= 2:
+        split_row = split_number[0]
+        split_col = split_number[1]
+    else:
+        raise ValueError("Invalid split number input")
+
+    row_interval = math.ceil(image.shape[0] / split_row)
+    col_interval = math.ceil(image.shape[1] / split_col)
 
     regions_map = {}
-    for row_region in range(split_num):
-        for col_region in range(split_num):
+    for row_region in range(split_row):
+        for col_region in range(split_col):
             coord_map = {}
             for row_coord in range(row_interval):
                 for col_coord in range(col_interval):

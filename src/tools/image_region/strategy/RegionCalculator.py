@@ -4,9 +4,10 @@ from src.tools.image_region.model.Region import merge_regions
 __author__ = 'Kern'
 
 
-def _generate_regions_merge_map(regions_set, max_eigen_diff):
+def _generate_regions_merge_map(regions_set, max_eigen_diff, max_merged_num):
     """
     generate a hash table that key is regions will be merged, value is the merged group NO.(new regions NO.)
+    :param max_merged_num:
     :param regions_set:
     :param max_eigen_diff:
     :return: the hash table
@@ -16,23 +17,23 @@ def _generate_regions_merge_map(regions_set, max_eigen_diff):
 
     for region in regions_set:
         if region.linked_regions:
-            closest_regions = min(region.linked_regions, key=lambda lr: abs(region.eigen - lr.eigen))
-            if abs(region.eigen - closest_regions.eigen) <= max_eigen_diff:
-                region_index = pre_merge_regions_map.get(region)
-                linked_index = pre_merge_regions_map.get(closest_regions)
-                if region_index is None and linked_index:
-                    pre_merge_regions_map[region] = linked_index
-                elif region_index and linked_index is None:
-                    pre_merge_regions_map[closest_regions] = region_index
-                elif region_index is None and linked_index is None:
-                    pre_merge_regions_map[region] = merge_index
-                    pre_merge_regions_map[closest_regions] = merge_index
-                    merge_index += 1
-                elif region_index != linked_index:
-                    for pre_region in [region for region, merge_index in pre_merge_regions_map.items() if
-                                       merge_index == region_index or merge_index == linked_index]:
-                        pre_merge_regions_map[pre_region] = merge_index
-                    merge_index += 1
+            for close_rank, closest_region in enumerate(sorted(region.linked_regions, key=lambda lr: abs(region.eigen - lr.eigen))):
+                if close_rank < max_merged_num and abs(region.eigen - closest_region.eigen) <= max_eigen_diff:
+                    region_index = pre_merge_regions_map.get(region)
+                    linked_index = pre_merge_regions_map.get(closest_region)
+                    if region_index is None and linked_index:
+                        pre_merge_regions_map[region] = linked_index
+                    elif region_index and linked_index is None:
+                        pre_merge_regions_map[closest_region] = region_index
+                    elif region_index is None and linked_index is None:
+                        pre_merge_regions_map[region] = merge_index
+                        pre_merge_regions_map[closest_region] = merge_index
+                        merge_index += 1
+                    elif region_index != linked_index:
+                        for pre_region in [region for region, merge_index in pre_merge_regions_map.items() if
+                                           merge_index == region_index or merge_index == linked_index]:
+                            pre_merge_regions_map[pre_region] = merge_index
+                        merge_index += 1
 
     return sorted(pre_merge_regions_map.items(), key=operator.itemgetter(1))
 
@@ -93,12 +94,12 @@ def merge_regions_map(sorted_prepared_regions, original_regions_set):
     return original_regions_set | new_regions_set
 
 
-def iterate_regions(regions_set, max_eigen_diff):
+def iterate_regions(regions_set, max_eigen_diff, max_merged_num):
     """
     Merge regions one time
     :param regions_set: all the regions to be merge
     :param max_eigen_diff: eigen value threshold to prevent two regions with large gap eigen values to be merged.
     :return: merged regions
     """
-    sorted_pre_regions = _generate_regions_merge_map(regions_set, max_eigen_diff)
+    sorted_pre_regions = _generate_regions_merge_map(regions_set, max_eigen_diff, max_merged_num)
     return merge_regions_map(sorted_pre_regions, regions_set.copy())

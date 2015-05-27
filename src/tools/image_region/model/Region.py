@@ -21,9 +21,13 @@ def merge_regions(regions):
     linked_regions_new = set()
     eigen_new = 0
 
+    count_coords = 0
     for region in regions:
+        count_coords += len(region.coord_map)
         coord_map_new.update(region.coord_map)
         linked_regions_new |= region.linked_regions
+
+    assert count_coords == len(coord_map_new)
 
     for region in regions:
         eigen_new += region.eigen * len(region.coord_map) / len(coord_map_new)
