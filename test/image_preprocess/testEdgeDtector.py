@@ -5,7 +5,6 @@ import matplotlib.pyplot as plt
 
 from src.image_preprocess.EdgeDetector import *
 
-
 __author__ = 'kern.ding'
 
 if len(sys.argv) < 2:

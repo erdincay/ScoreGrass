@@ -2,7 +2,6 @@ from sklearn.linear_model import BayesianRidge
 
 from src.learning.regression.ScikitLearning import ScikitModel
 
-
 __author__ = 'Kern'
 
 

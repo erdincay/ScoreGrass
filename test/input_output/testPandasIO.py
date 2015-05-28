@@ -3,7 +3,6 @@ import sys
 
 import pandas as pd
 
-
 __author__ = 'Kern'
 
 if len(sys.argv) < 2:

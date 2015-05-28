@@ -2,7 +2,6 @@ from sklearn.svm import SVR
 
 from src.learning.regression.ScikitLearning import ScikitModel
 
-
 __author__ = 'Kern'
 
 

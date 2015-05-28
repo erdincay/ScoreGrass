@@ -12,4 +12,3 @@ def merge_dicts(*dict_args):
     for dictionary in dict_args:
         dict_new.update(dictionary)
     return dict_new
-

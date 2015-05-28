@@ -5,7 +5,6 @@ from skimage import data
 
 from src.image_feature.GLCM import *
 
-
 PATCH_SIZE = 21
 
 # open the camera image

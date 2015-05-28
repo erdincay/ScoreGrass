@@ -1,7 +1,11 @@
 import inspect
+import os
 import sys
 import logging
 
+import numpy as np
+
+from datetime import datetime
 from skimage import io
 
 from src.tools.image_region.strategy.EdgeMarker import make_region_edge
@@ -13,39 +17,115 @@ __author__ = 'Kern'
 logging.basicConfig(filename=inspect.getfile(inspect.currentframe()) + '.log', level=logging.DEBUG)
 
 
-def logging_regions(regions):
+def _logging_regions(regions):
     for r in regions:
         logging.info(r)
     logging.info("total: " + str(len(regions)))
 
 
-if len(sys.argv) < 2:
+def calc_regions(input_image, split_num, max_eigen_diff, max_merged_num, path):
+    input_regions = init_regions(image, split_num)
+
+    new_set_len = 0
+    old_set_len = len(input_regions)
+
+    while new_set_len < old_set_len:
+        old_set_len = len(input_regions)
+        input_regions = iterate_regions(input_regions, max_eigen_diff, max_merged_num)
+        new_set_len = len(input_regions)
+
+    # _logging_regions(input_regions)
+
+    output_image = input_image
+    for index, region in enumerate(input_regions):
+        edge = make_region_edge(region)
+        output_image = edge.draw(output_image, [255, 255, 255])
+
+    io.imsave(os.path.join(path, str(split_num) + '-' + "{:10.2f}".format(max_eigen_diff) + '-' + str(max_merged_num) + '-.jpg'), output_image)
+
+
+if len(sys.argv) < 3:
     raise ValueError("Usage:", sys.argv[0], " Missing some argument to indicate input files")
 
-path = sys.argv[1]
-readret = io.imread(path)
+input_file = sys.argv[1]
+output_path = sys.argv[2]
+
+current_output_path = os.path.join(output_path, datetime.now().strftime("%Y-%m-%d %H_%M_%S"))
+if not os.path.exists(current_output_path):
+    os.makedirs(current_output_path)
+
+readret = io.imread(input_file)
 if len(readret.shape) == 3:
     image = readret
 elif len(readret.shape) == 1:
     image = readret[0]
 else:
-    raise ValueError("cannot read the image: " + path)
+    raise ValueError("cannot read the input image: " + input_file)
 
-regions_set = init_regions(image, 200)
+io.imsave(os.path.join(current_output_path, "original.jpg"), image)
 
-new_set_len = 0
-old_set_len = len(regions_set)
+calc_regions(np.copy(image), 100, 8, 1, current_output_path)
+calc_regions(np.copy(image), 100, 8, 2, current_output_path)
+calc_regions(np.copy(image), 100, 8, 3, current_output_path)
+calc_regions(np.copy(image), 100, 8.25, 1, current_output_path)
+calc_regions(np.copy(image), 100, 8.25, 2, current_output_path)
+calc_regions(np.copy(image), 100, 8.25, 3, current_output_path)
+calc_regions(np.copy(image), 100, 8.5, 1, current_output_path)
+calc_regions(np.copy(image), 100, 8.5, 2, current_output_path)
+calc_regions(np.copy(image), 100, 8.5, 3, current_output_path)
+calc_regions(np.copy(image), 100, 8.75, 1, current_output_path)
+calc_regions(np.copy(image), 100, 8.75, 2, current_output_path)
+calc_regions(np.copy(image), 100, 8.75, 3, current_output_path)
 
-while new_set_len < old_set_len:
-    old_set_len = len(regions_set)
-    regions_set = iterate_regions(regions_set, 10, 3)
-    new_set_len = len(regions_set)
 
-logging_regions(regions_set)
+calc_regions(np.copy(image), 125, 7.75, 1, current_output_path)
+calc_regions(np.copy(image), 125, 7.75, 2, current_output_path)
+calc_regions(np.copy(image), 125, 7.75, 3, current_output_path)
+calc_regions(np.copy(image), 125, 8, 1, current_output_path)
+calc_regions(np.copy(image), 125, 8, 2, current_output_path)
+calc_regions(np.copy(image), 125, 8, 3, current_output_path)
+calc_regions(np.copy(image), 125, 8.25, 1, current_output_path)
+calc_regions(np.copy(image), 125, 8.25, 2, current_output_path)
+calc_regions(np.copy(image), 125, 8.25, 3, current_output_path)
+calc_regions(np.copy(image), 125, 8.5, 1, current_output_path)
+calc_regions(np.copy(image), 125, 8.5, 2, current_output_path)
+calc_regions(np.copy(image), 125, 8.5, 3, current_output_path)
 
-for index, region in enumerate(regions_set):
-    edge = make_region_edge(region)
-    image = edge.draw(image, [255, 255, 255])
+calc_regions(np.copy(image), 150, 7.5, 1, current_output_path)
+calc_regions(np.copy(image), 150, 7.5, 2, current_output_path)
+calc_regions(np.copy(image), 150, 7.5, 3, current_output_path)
+calc_regions(np.copy(image), 150, 7.75, 1, current_output_path)
+calc_regions(np.copy(image), 150, 7.75, 2, current_output_path)
+calc_regions(np.copy(image), 150, 7.75, 3, current_output_path)
+calc_regions(np.copy(image), 150, 8, 1, current_output_path)
+calc_regions(np.copy(image), 150, 8, 2, current_output_path)
+calc_regions(np.copy(image), 150, 8, 3, current_output_path)
+calc_regions(np.copy(image), 150, 8.25, 1, current_output_path)
+calc_regions(np.copy(image), 150, 8.25, 2, current_output_path)
+calc_regions(np.copy(image), 150, 8.25, 3, current_output_path)
 
-io.imshow(image)
-io.show()
+calc_regions(np.copy(image), 175, 7.25, 1, current_output_path)
+calc_regions(np.copy(image), 175, 7.25, 2, current_output_path)
+calc_regions(np.copy(image), 175, 7.25, 3, current_output_path)
+calc_regions(np.copy(image), 175, 7.5, 1, current_output_path)
+calc_regions(np.copy(image), 175, 7.5, 2, current_output_path)
+calc_regions(np.copy(image), 175, 7.5, 3, current_output_path)
+calc_regions(np.copy(image), 175, 7.75, 1, current_output_path)
+calc_regions(np.copy(image), 175, 7.75, 2, current_output_path)
+calc_regions(np.copy(image), 175, 7.75, 3, current_output_path)
+calc_regions(np.copy(image), 175, 8, 1, current_output_path)
+calc_regions(np.copy(image), 175, 8, 2, current_output_path)
+calc_regions(np.copy(image), 175, 8, 3, current_output_path)
+
+calc_regions(np.copy(image), 200, 7, 1, current_output_path)
+calc_regions(np.copy(image), 200, 7, 2, current_output_path)
+calc_regions(np.copy(image), 200, 7, 3, current_output_path)
+calc_regions(np.copy(image), 200, 7.25, 1, current_output_path)
+calc_regions(np.copy(image), 200, 7.25, 2, current_output_path)
+calc_regions(np.copy(image), 200, 7.25, 3, current_output_path)
+calc_regions(np.copy(image), 200, 7.5, 1, current_output_path)
+calc_regions(np.copy(image), 200, 7.5, 2, current_output_path)
+calc_regions(np.copy(image), 200, 7.5, 3, current_output_path)
+calc_regions(np.copy(image), 200, 7.75, 1, current_output_path)
+calc_regions(np.copy(image), 200, 7.75, 2, current_output_path)
+calc_regions(np.copy(image), 200, 7.75, 3, current_output_path)

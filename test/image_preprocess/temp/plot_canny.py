@@ -80,4 +80,3 @@ ax.axis('image')
 ax.set_xticks([])
 ax.set_yticks([])
 plt.show()
-

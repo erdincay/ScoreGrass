@@ -5,7 +5,6 @@ import pandas as pd
 
 from src.file_io import ImageOrganizer
 
-
 __author__ = 'Kern'
 
 

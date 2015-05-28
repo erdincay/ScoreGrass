@@ -47,5 +47,3 @@ def compute_feats(image, kernels):
     index = pd.MultiIndex.from_tuples(list(zip(label_l1, label_l2)), names=['method', 'attr'])
 
     return pd.Series(data, index)
-
-

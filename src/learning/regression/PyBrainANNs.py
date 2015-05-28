@@ -9,7 +9,6 @@ from pybrain.tools.validation import ModuleValidator
 from sklearn.externals import joblib
 from src.learning.regression.ScikitLearning import regression_score
 
-
 __author__ = 'Kern'
 
 

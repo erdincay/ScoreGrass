@@ -4,7 +4,6 @@ import numpy as np
 
 from src.learning.regression.ScikitLearning import regression_score
 
-
 __author__ = 'Kern'
 
 

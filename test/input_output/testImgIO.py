@@ -5,7 +5,6 @@ from skimage.color import rgb2grey
 from skimage.viewer import ImageViewer
 from skimage.filters import sobel
 
-
 __author__ = 'Kern'
 
 if len(sys.argv) < 2:

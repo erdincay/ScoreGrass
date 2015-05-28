@@ -4,6 +4,7 @@ from src.tools.image_region.model.Region import Region
 
 __author__ = 'Kern'
 
+
 def _init_linked_region(regions_map, boundary):
     for coord, region in regions_map.items():
         for linked_coord in {c for c in generate_square_linked_coordinates(coord)

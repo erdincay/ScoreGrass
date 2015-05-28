@@ -7,11 +7,11 @@ from skimage.util import img_as_float
 from src.image_feature.GaborFilter import *
 
 
-def match(feats, ref_feats):
+def match(features, ref_features):
     min_error = np.inf
     min_i = None
-    for i in range(ref_feats.shape[0]):
-        error = np.sum((feats - ref_feats[i, :]) ** 2)
+    for i in range(ref_features.shape[0]):
+        error = np.sum((features - ref_features[i, :]) ** 2)
         if error < min_error:
             min_error = error
             min_i = i
@@ -48,11 +48,11 @@ feats = compute_feats(nd.rotate(grass, angle=145, reshape=False), kernels)
 print(image_names[match(feats, ref_feats)])
 
 
-def power(image, kernel):
+def power(image, kl):
     # Normalize images for better comparison.
     image = (image - image.mean()) / image.std()
-    return np.sqrt(nd.convolve(image, np.real(kernel), mode='wrap') ** 2 +
-                   nd.convolve(image, np.imag(kernel), mode='wrap') ** 2)
+    return np.sqrt(nd.convolve(image, np.real(kl), mode='wrap') ** 2 +
+                   nd.convolve(image, np.imag(kl), mode='wrap') ** 2)
 
 # Plot a selection of the filter bank kernels and their responses.
 results = []

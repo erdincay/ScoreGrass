@@ -12,7 +12,6 @@ from src.learning.strategy.ColorRegression import ColorRegression
 from src.learning.strategy.MixedRegression import MixedRegression
 from src.learning.strategy.QualityRegression import QualityRegression
 
-
 __author__ = 'Kern'
 
 
@@ -76,7 +75,7 @@ def train(original_data_path, preprocessed_dir, excel, sheet_name, feature_data_
     color_x = x_data[hue_column_name]
     color_y = y_data[color_column_name]
     color_models = ColorRegression(feature_dimensions(color_x), feature_dimensions(color_y))
-    model_score_dict = {color_models.__class__.__name__:  color_models.validation(color_x, color_y, 0.25)}
+    model_score_dict = {color_models.__class__.__name__: color_models.validation(color_x, color_y, 0.25)}
     color_models.save(model_data_path)
 
     # kinds of models to train on quality score

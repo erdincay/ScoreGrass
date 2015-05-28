@@ -16,7 +16,7 @@ def compute_feats(image, distances, angles):
     :param image: is just numpy array
     :param distances: List of pixel pair distance offsets
     :param angles: List of pixel pair angles in radians for the offsets
-    :return: [[diss1, corr1], [diss2, corr2], [diss3, corr3], [diss4, corr4]... ] stand for dissimilarity and correlation attribute of co-occurrence matrix  by different input parametes combinations [[dis1, ang1], [dis1, ang2],[dis2, ang1],[dis2, ang2]]. So there are totally len(distances) * len(angles) pairs of return features, wrappd by pandas.Series
+    :return: [[diss1, corr1], [diss2, corr2], [diss3, corr3], [diss4, corr4]... ] stand for dissimilarity and correlation attribute of co-occurrence matrix  by different input parameters combinations [[dis1, ang1], [dis1, ang2],[dis2, ang1],[dis2, ang2]]. So there are totally len(distances) * len(angles) pairs of return features, wrapped by pandas.Series
     """
     glcm = greycomatrix(image, distances, angles, 256, symmetric=True, normed=True)
     dissimilarities = greycoprops(glcm, 'dissimilarity').flat

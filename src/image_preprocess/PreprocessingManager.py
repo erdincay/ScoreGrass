@@ -63,6 +63,3 @@ def pre_process(image_collection):
         # ret[name] = transform.resize(cropped_img, (1152, 864))
         ret[name] = cropped_img
     return ret
-
-
-

@@ -6,7 +6,6 @@ from skimage import color
 
 from src.image_preprocess.PeakDetector import generate_green_map
 
-
 __author__ = 'Kern'
 
 if len(sys.argv) < 2:

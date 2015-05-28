@@ -4,7 +4,6 @@ from skimage.color import rgb2grey
 from src.image_feature import GaborFilter
 from src.image_feature import ColorAnalyzer
 
-
 __author__ = 'kern.ding'
 
 

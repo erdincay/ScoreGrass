@@ -1,5 +1,6 @@
 __author__ = 'Kern'
 
+
 def generate_square_linked_coordinates(coord):
     row_list = [coord[0] - 1, coord[0], coord[0] + 1]
     col_list = [coord[1] - 1, coord[1], coord[1] + 1]

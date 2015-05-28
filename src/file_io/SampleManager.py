@@ -2,7 +2,6 @@ import pandas as pd
 
 from src.file_io import ImageOrganizer
 
-
 __author__ = 'Kern'
 
 
@@ -10,8 +9,7 @@ def prepare_preprocessing_image(excel_df, preprocessed_path, original_path, file
     return ImageOrganizer.prepare_images(excel_df[file_column_name], original_path, preprocessed_path)
 
 
-def prepare_image_data(excel_df, image_dict, file_column_name, color_column_name, quality_column_name,
-                          l2_label_name):
+def prepare_image_data(excel_df, image_dict, file_column_name, color_column_name, quality_column_name, l2_label_name):
     name_list = [file_column_name, color_column_name, quality_column_name]
     multi_index_list = [[l2_label_name] * len(name_list), name_list]
 
