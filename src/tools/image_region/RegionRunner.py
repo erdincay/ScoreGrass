@@ -64,29 +64,6 @@ else:
 
 io.imsave(os.path.join(current_output_path, "original.jpg"), image)
 
-calc_regions(np.copy(image), 100, 7, 1, current_output_path)
-calc_regions(np.copy(image), 100, 8, 1, current_output_path)
-calc_regions(np.copy(image), 100, 9, 1, current_output_path)
-calc_regions(np.copy(image), 100, 10, 1, current_output_path)
-
-calc_regions(np.copy(image), 125, 8, 1, current_output_path)
-calc_regions(np.copy(image), 125, 9, 1, current_output_path)
-calc_regions(np.copy(image), 125, 10, 1, current_output_path)
-calc_regions(np.copy(image), 125, 11, 1, current_output_path)
-
-calc_regions(np.copy(image), 150, 9, 1, current_output_path)
-calc_regions(np.copy(image), 150, 10, 1, current_output_path)
-calc_regions(np.copy(image), 150, 11, 1, current_output_path)
-calc_regions(np.copy(image), 150, 12, 1, current_output_path)
-
-calc_regions(np.copy(image), 175, 9, 1, current_output_path)
-calc_regions(np.copy(image), 175, 10, 1, current_output_path)
-calc_regions(np.copy(image), 175, 11, 1, current_output_path)
-calc_regions(np.copy(image), 175, 12, 1, current_output_path)
-calc_regions(np.copy(image), 175, 13, 1, current_output_path)
-
-calc_regions(np.copy(image), 200, 10, 1, current_output_path)
 calc_regions(np.copy(image), 200, 11, 1, current_output_path)
-calc_regions(np.copy(image), 200, 12, 1, current_output_path)
-calc_regions(np.copy(image), 200, 13, 1, current_output_path)
-calc_regions(np.copy(image), 200, 14, 1, current_output_path)
+calc_regions(np.copy(image), 175, 12, 1, current_output_path)
+
