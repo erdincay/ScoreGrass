@@ -163,4 +163,5 @@ if b_load_model:
 else:
     color_m, quality_m, mixed_m = train(original_data_home, preprocessed_folder, excel_file, excel_sheet_name,
                                         feature_data_home, model_data_home, output_result_home)
+
 predict(predict_data_home, preprocessed_folder, feature_data_home, color_m, quality_m, mixed_m, output_result_home)

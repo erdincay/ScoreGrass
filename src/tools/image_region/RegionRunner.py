@@ -65,5 +65,3 @@ else:
 io.imsave(os.path.join(current_output_path, "original.jpg"), image)
 
 calc_regions(np.copy(image), 200, 11, 1, current_output_path)
-calc_regions(np.copy(image), 175, 12, 1, current_output_path)
-
