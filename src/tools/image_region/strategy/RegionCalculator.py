@@ -17,8 +17,8 @@ def _generate_regions_merge_map(regions_set, max_eigen_diff, max_merged_num):
 
     for region in regions_set:
         if region.linked_regions:
-            for close_rank, closest_region in enumerate(sorted(region.linked_regions, key=lambda lr: abs(region.get_greeness() - lr.get_greeness()))):
-                if close_rank < max_merged_num and abs(region.get_greeness() - closest_region.get_greeness()) <= max_eigen_diff:
+            for close_rank, closest_region in enumerate(sorted(region.linked_regions, key=lambda lr: abs(region.get_hue() - lr.get_hue()) + abs(region.get_saturation() - lr.get_saturation()))):
+                if close_rank < max_merged_num:
                     region_index = pre_merge_regions_map.get(region)
                     linked_index = pre_merge_regions_map.get(closest_region)
                     if region_index is None and linked_index:

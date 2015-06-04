@@ -73,3 +73,9 @@ class Region:
 
     def get_greeness(self):
         return self.get_eigen()[1]
+
+    def get_hue(self):
+        return self.get_eigen()[0]
+
+    def get_saturation(self):
+        return self.get_eigen()[1]

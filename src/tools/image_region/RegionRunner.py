@@ -7,6 +7,7 @@ import numpy as np
 
 from datetime import datetime
 from skimage import io
+from skimage.color import rgb2hsv
 
 from src.tools.image_region.strategy.EdgeMarker import make_region_edge
 from src.tools.image_region.strategy.RegionCalculator import iterate_regions
@@ -24,7 +25,7 @@ def _logging_regions(regions):
 
 
 def calc_regions(input_image, split_num, max_eigen_diff, max_merged_num, path):
-    input_regions = init_regions(image, split_num)
+    input_regions = init_regions(rgb2hsv(image), split_num)
 
     new_set_len = 0
     old_set_len = len(input_regions)
@@ -63,5 +64,6 @@ else:
     raise ValueError("cannot read the input image: " + input_file)
 
 io.imsave(os.path.join(current_output_path, "original.jpg"), image)
+
 
 calc_regions(np.copy(image), 200, 11, 1, current_output_path)
