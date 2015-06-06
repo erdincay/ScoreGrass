@@ -25,20 +25,20 @@ def _logging_regions(regions):
 
 
 def calc_regions(input_image, split_num, max_eigen_diff, max_merged_num, path):
-    input_regions = init_regions(rgb2hsv(image), split_num)
+    regions = init_regions(rgb2hsv(image), split_num)
 
     new_set_len = 0
-    old_set_len = len(input_regions)
+    old_set_len = len(regions)
 
     while new_set_len < old_set_len:
-        old_set_len = len(input_regions)
-        input_regions = iterate_regions(input_regions, max_eigen_diff, max_merged_num)
-        new_set_len = len(input_regions)
+        old_set_len = len(regions)
+        regions = iterate_regions(regions, max_eigen_diff, max_merged_num)
+        new_set_len = len(regions)
 
-    # _logging_regions(input_regions)
+        _logging_regions(regions)
 
     output_image = input_image
-    for index, region in enumerate(input_regions):
+    for index, region in enumerate(regions):
         edge = make_region_edge(region)
         output_image = edge.draw(output_image, [255, 255, 255])
 
@@ -66,4 +66,4 @@ else:
 io.imsave(os.path.join(current_output_path, "original.jpg"), image)
 
 
-calc_regions(np.copy(image), 200, 11, 1, current_output_path)
+calc_regions(np.copy(image), 200, 80, 1, current_output_path)
