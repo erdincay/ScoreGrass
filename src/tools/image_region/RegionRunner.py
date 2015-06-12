@@ -6,7 +6,7 @@ import logging
 import numpy as np
 
 from datetime import datetime
-from skimage import io
+from skimage import io, img_as_uint
 from skimage.color import rgb2hsv
 
 from src.tools.image_region.strategy.EdgeMarker import make_region_edge
@@ -25,7 +25,7 @@ def _logging_regions(regions):
 
 
 def calc_regions(input_image, split_num, max_eigen_diff, max_merged_num, path):
-    regions = init_regions(rgb2hsv(image), split_num)
+    regions = init_regions(img_as_uint(rgb2hsv(image)), split_num)
 
     new_set_len = 0
     old_set_len = len(regions)
